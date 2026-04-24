@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #07080a;
+  --color-foreground: #f9f9f9;
+  --color-muted: #9c9c9d;
+  --color-subtle: #6a6b6c;
+  --color-light-gray: #cecece;
+  --color-silver: #c0c0c0;
+  --color-surface-100: #101111;
+  --color-surface-200: #1b1c1e;
+  --color-red-accent: #ff6363;
+  --color-blue-accent: #55b3ff;
+  --color-green-accent: #5fc992;
+  --color-yellow-accent: #ffbc33;
+  --color-violet-accent: #8d6dff;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono:
+    "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+  --radius-card: 12px;
+}
+
+:root {
+  --hero-glow-primary: radial-gradient(
+    ellipse at center,
+    rgba(255, 92, 112, 0.24) 0%,
+    rgba(168, 30, 60, 0.14) 38%,
+    rgba(0, 0, 0, 0) 78%
+  );
+  --hero-glow-soft: radial-gradient(
+    ellipse at 50% 90%,
+    rgba(255, 90, 110, 0.13) 0%,
+    rgba(118, 20, 42, 0.08) 46%,
+    rgba(0, 0, 0, 0) 80%
+  );
+  --hero-glow-focus: radial-gradient(
+    circle at 50% 48%,
+    rgba(255, 99, 99, 0.46) 0%,
+    rgba(255, 78, 110, 0.34) 34%,
+    rgba(164, 28, 54, 0.2) 58%,
+    rgba(0, 0, 0, 0) 82%
+  );
+  --hero-glow-core: radial-gradient(
+    circle,
+    rgba(255, 178, 178, 0.34) 0%,
+    rgba(255, 104, 122, 0.24) 45%,
+    rgba(0, 0, 0, 0) 78%
+  );
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans);
+    font-feature-settings:
+      "calt" 1,
+      "kern" 1,
+      "liga" 1,
+      "ss03" 1;
+    letter-spacing: 0.2px;
+    line-height: 1.6;
+    font-weight: 500;
+  }
+
+  #root {
+    @apply flex min-h-dvh flex-col;
+  }
+
+  h1 {
+    @apply text-foreground text-[64px] leading-[1.1] font-semibold max-md:text-[40px] max-sm:text-[32px];
+  }
+
+  h2 {
+    @apply text-foreground text-[56px] leading-[1.17] font-medium tracking-[0.2px] max-md:text-[36px] max-sm:text-[28px];
+  }
+
+  h3 {
+    @apply text-foreground text-[24px] font-medium tracking-[0.2px] max-md:text-[20px];
+  }
+
+  p {
+    @apply text-foreground text-[16px] leading-[1.6] font-medium tracking-[0.2px] max-sm:text-[14px];
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
+}
+
+@utility container {
+  @apply mx-auto w-full max-w-[1200px] px-6 max-sm:px-[18px];
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}
