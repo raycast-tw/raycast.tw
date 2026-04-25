@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useParams, Link } from "react-router";
 import { ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
@@ -9,7 +9,7 @@ export function NewsletterDetailPage() {
   const { id } = useParams<{ id: string }>();
   const newsletter = newsletters.find((n) => n.id === id);
   const typeLabel = newsletter?.type === "monthly" ? "月報" : "週報";
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const progressBarRef = useRef<HTMLDivElement>(null);
 
   useSeo(
     newsletter
@@ -39,6 +39,9 @@ export function NewsletterDetailPage() {
   );
 
   useEffect(() => {
+    const bar = progressBarRef.current;
+    if (!bar) return;
+
     const updateProgress = () => {
       const scrollTop = window.scrollY || window.pageYOffset;
       const documentHeight = Math.max(
@@ -49,17 +52,16 @@ export function NewsletterDetailPage() {
       const maxScrollable = documentHeight - viewportHeight;
 
       if (maxScrollable <= 0) {
-        setScrollProgress(0);
+        bar.style.transform = "scaleX(0)";
         return;
       }
 
-      // Avoid fractional-pixel drift so the bar reaches 100% at the bottom.
       const distanceToBottom = documentHeight - (scrollTop + viewportHeight);
-      const nextProgress =
+      const progress =
         distanceToBottom <= 1
-          ? 100
-          : Math.min(100, Math.max(0, (scrollTop / maxScrollable) * 100));
-      setScrollProgress(nextProgress);
+          ? 1
+          : Math.min(1, Math.max(0, scrollTop / maxScrollable));
+      bar.style.transform = `scaleX(${progress})`;
     };
 
     updateProgress();
@@ -97,8 +99,9 @@ export function NewsletterDetailPage() {
       {/* Scroll progress bar */}
       <div className="pointer-events-none fixed inset-x-0 top-0 z-50 h-[3px] bg-transparent">
         <div
-          className="h-full origin-left bg-[linear-gradient(90deg,#FF6363_0%,#FF6363_100%)] shadow-[0_0_18px_rgba(255,99,99,0.58)] transition-[width] duration-100 ease-out"
-          style={{ width: `${scrollProgress}%` }}
+          ref={progressBarRef}
+          className="h-full w-full origin-left bg-[linear-gradient(90deg,#FF6363_0%,#FF6363_100%)] shadow-[0_0_18px_rgba(255,99,99,0.58)] will-change-transform"
+          style={{ transform: "scaleX(0)" }}
         />
       </div>
 

@@ -1,3 +1,7 @@
+import ycAvatar from "../assets/ambassadors/yc.jpg";
+import cashAvatar from "../assets/ambassadors/cash.jpg";
+import weihoAvatar from "../assets/ambassadors/1weiho.jpg";
+
 export interface Ambassador {
   id: string;
   name: string;
@@ -15,7 +19,7 @@ export const ambassadors: Ambassador[] = [
     id: "yc",
     name: "Yen Cheng",
     role: "Ambassador",
-    avatar: "/src/assets/ambassadors/yc.jpg",
+    avatar: ycAvatar,
     threads: "https://www.threads.com/@yencheng_0802",
     twitter: "https://x.com/ridemountainpig",
     website: "https://yencheng.dev",
@@ -24,7 +28,7 @@ export const ambassadors: Ambassador[] = [
     id: "cash",
     name: "Cash Wu",
     role: "Ambassador",
-    avatar: "/src/assets/ambassadors/cash.jpg",
+    avatar: cashAvatar,
     threads: "https://www.threads.com/@cashwugeek",
     twitter: "https://x.com/CashWuGeek",
   },
@@ -32,7 +36,7 @@ export const ambassadors: Ambassador[] = [
     id: "1weiho",
     name: "Yiwei",
     role: "Ambassador",
-    avatar: "/src/assets/ambassadors/1weiho.jpg",
+    avatar: weihoAvatar,
     threads: "https://www.threads.com/@1weiho",
     twitter: "https://x.com/1weiho",
     website: "https://1wei.dev",
