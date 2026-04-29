@@ -123,4 +123,18 @@ export const newsletters: Newsletter[] = [
     episode: "RW005",
     content: html("weekly-2026-rw005"),
   },
+  {
+    id: "weekly-2026-rw006",
+    title:
+      "Raycast Weekly RW006：新版 Raycast rollout、GPT-5.5 與 Theme Studio",
+    date: "2026-04-28",
+    type: "weekly",
+    theme: "violet",
+    kicker: "Raycast Weekly",
+    summary:
+      "第六期週報整理新版 Raycast rollout、GPT-5.5、Windows Theme Studio、Glaze 社群作品與五月中旬前的活動動態。",
+    author: "Alexi | Raycast Weekly",
+    episode: "RW006",
+    content: html("weekly-2026-rw006"),
+  },
 ];
