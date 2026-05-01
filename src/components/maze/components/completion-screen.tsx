@@ -51,11 +51,17 @@ export function CompletionScreen() {
   }, [state.phase, handleReset]);
 
   React.useEffect(() => {
-    if (state.phase !== "complete" || state.startTime === null) {
-      setElapsedMs(0);
+    const startTime = state.startTime;
+    if (state.phase !== "complete" || startTime === null) {
+      queueMicrotask(() => setElapsedMs(0));
       return;
     }
-    setElapsedMs(Date.now() - state.startTime);
+
+    const frameId = requestAnimationFrame(() => {
+      setElapsedMs(Date.now() - startTime);
+    });
+
+    return () => cancelAnimationFrame(frameId);
   }, [state.phase, state.startTime]);
 
   if (state.phase !== "complete") return null;

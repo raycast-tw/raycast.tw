@@ -197,10 +197,14 @@ export function EventCard({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 22, scale: 0.985 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.24 }}
-      transition={{ duration: 0.5, delay: Math.min(index, 2) * 0.14 }}
+      transition={{
+        duration: 0.48,
+        ease: [0.25, 0.4, 0.25, 1],
+        delay: Math.min(index, 2) * 0.12,
+      }}
     >
       {useGalleryLink ? (
         <Link to={detailPath} className={cardClassName}>

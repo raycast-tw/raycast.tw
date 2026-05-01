@@ -550,8 +550,6 @@ export function MazeCanvas(): React.ReactElement {
     mazeDevLog("[MazeCanvas:init] Game loop starting");
 
     function loop(timestamp: number) {
-      rafRef.current = requestAnimationFrame(loop);
-
       const dt =
         lastTimeRef.current === 0
           ? 0
@@ -635,6 +633,7 @@ export function MazeCanvas(): React.ReactElement {
         (phase === "start" && needsStaticRedrawRef.current);
 
       if (!shouldDraw) {
+        rafRef.current = 0;
         return;
       }
 
@@ -654,15 +653,22 @@ export function MazeCanvas(): React.ReactElement {
       if (phase === "start" && needsStaticRedrawRef.current) {
         needsStaticRedrawRef.current = false;
       }
+
+      if (phase === "playing") {
+        rafRef.current = requestAnimationFrame(loop);
+      } else {
+        rafRef.current = 0;
+      }
     }
 
     rafRef.current = requestAnimationFrame(loop);
     return () => {
-      cancelAnimationFrame(rafRef.current);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      rafRef.current = 0;
       lastTimeRef.current = 0;
       mazeDevLog("[MazeCanvas:cleanup] Game loop stopped");
     };
-  }, [dpr]);
+  }, [dpr, state.phase]);
 
   return (
     <div

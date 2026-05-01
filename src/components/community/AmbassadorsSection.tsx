@@ -49,39 +49,27 @@ export function AmbassadorsSection() {
 
           <motion.div
             className="mt-10 grid gap-3 md:grid-cols-2"
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.6, delay: 0.08 }}
+            transition={{ duration: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
           >
-            <motion.figure
-              className="overflow-hidden rounded-[18px] border border-white/12 bg-white/4"
-              initial={{ opacity: 0, scale: 0.98 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.5, delay: 0.14 }}
-            >
+            <figure className="overflow-hidden rounded-[18px] border border-white/12 bg-white/4">
               <img
                 src={tokyoMeetupPhoto}
                 alt="Taiwan Ambassador 與 Japan Ambassador 在 Tokyo Meetup 合照"
                 className="h-full min-h-[220px] w-full object-cover"
                 loading="lazy"
               />
-            </motion.figure>
-            <motion.figure
-              className="overflow-hidden rounded-[18px] border border-white/12 bg-white/4"
-              initial={{ opacity: 0, scale: 0.98 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
+            </figure>
+            <figure className="overflow-hidden rounded-[18px] border border-white/12 bg-white/4">
               <img
                 src={raycastFamilyPhoto}
                 alt="Taiwan Ambassador、Japan Ambassador 與 Raycast team 合照"
                 className="h-full min-h-[220px] w-full object-cover"
                 loading="lazy"
               />
-            </motion.figure>
+            </figure>
           </motion.div>
           <p className="text-light-gray mt-4 text-[14px] leading-[1.6] font-medium tracking-[0.2px]">
             Taiwan Ambassador 與 Japan Ambassador、Raycast team 在 Tokyo Meetup

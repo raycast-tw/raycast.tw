@@ -1,12 +1,3 @@
-const taichungPhotos = Object.entries(
-  import.meta.glob<string>("../assets/events/raycafe-taichung-10-19/*.jpg", {
-    eager: true,
-    import: "default",
-  }),
-)
-  .sort(([leftPath], [rightPath]) => leftPath.localeCompare(rightPath))
-  .map(([, source]) => source);
-
 export interface TaiwanEvent {
   id: string;
   title: string;
@@ -20,7 +11,7 @@ export interface TaiwanEvent {
   imageKicker: string;
   imageUrl?: string;
   imageUrls?: string[];
-  galleryImages?: string[];
+  hasGallery?: boolean;
 }
 
 export const taiwanEvents: TaiwanEvent[] = [
@@ -37,7 +28,7 @@ export const taiwanEvents: TaiwanEvent[] = [
     imageKicker: "Community Meetup",
     imageUrl:
       "https://images.lumacdn.com/event-covers/va/8130bae4-f4f2-4625-b3df-70bfc883eaa9.png",
-    galleryImages: taichungPhotos,
+    hasGallery: true,
   },
   {
     id: "tw-2",

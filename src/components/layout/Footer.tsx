@@ -19,11 +19,11 @@ const footerLinks = {
     ],
   },
   raycastCommunity: {
-    title: "Raycast 社群",
+    title: "Raycast 官方社群",
     links: [
       { label: "X / Twitter", href: "https://twitter.com/raycast" },
       { label: "YouTube", href: "https://www.youtube.com/@raycastapp" },
-      { label: "Slack", href: "https://www.raycast.com/community" },
+      { label: "Community", href: "https://www.raycast.com/community" },
       { label: "Luma", href: "https://luma.com/raycast" },
     ],
   },

@@ -14,6 +14,12 @@ const navLinks = [
     desktopOnly: false,
   },
   {
+    label: "全球活動",
+    href: "/#globe",
+    id: "globe",
+    desktopOnly: false,
+  },
+  {
     label: "電子報",
     href: "/#newsletter",
     id: "newsletter",
@@ -138,6 +144,7 @@ export function Header() {
                   onClick={() => setMobileOpen(!mobileOpen)}
                   className="text-foreground md:hidden"
                   aria-label="選單"
+                  aria-expanded={mobileOpen}
                 >
                   {mobileOpen ? (
                     <X className="size-5" />

@@ -50,10 +50,14 @@ export function AmbassadorCard({ ambassador, index = 0 }: AmbassadorCardProps) {
   return (
     <motion.div
       className="group flex items-center gap-5 rounded-lg border border-white/10 bg-[linear-gradient(180deg,rgba(16,18,23,0.9)_0%,rgba(10,11,15,0.94)_100%)] px-5 py-5 text-left shadow-[0_30px_74px_-46px_rgba(0,0,0,0.92),0_0_50px_-42px_rgba(85,179,255,0.12),inset_0_1px_0_rgba(255,255,255,0.07)] transition hover:-translate-y-1 hover:border-white/16 hover:shadow-[0_36px_90px_-42px_rgba(0,0,0,0.98),0_0_56px_-44px_rgba(255,255,255,0.14),0_0_54px_-28px_rgba(255,99,91,0.52),inset_0_1px_0_rgba(255,255,255,0.09)]"
-      initial={{ opacity: 0, y: 16, scale: 0.99 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      initial={{ opacity: 0, y: 14 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.24 }}
-      transition={{ duration: 0.46, delay: Math.min(index, 2) * 0.12 }}
+      transition={{
+        duration: 0.44,
+        ease: [0.25, 0.4, 0.25, 1],
+        delay: Math.min(index, 2) * 0.1,
+      }}
     >
       {ambassador.avatar ? (
         <div className="size-20 shrink-0 overflow-hidden rounded-full border-[3px] border-white/18 bg-black/20">

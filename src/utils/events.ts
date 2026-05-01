@@ -1,14 +1,36 @@
 import type { TaiwanEvent } from "../data/events";
 
-export function getEventImages(
-  event: TaiwanEvent,
-  { includeGallery = false } = {},
-): string[] {
-  if (includeGallery && event.galleryImages && event.galleryImages.length > 0)
-    return event.galleryImages;
+const taichungGalleryImageLoaders = import.meta.glob<string>(
+  "../assets/events/raycafe-taichung-10-19/*.jpg",
+  {
+    import: "default",
+  },
+);
+
+const galleryImageLoadersByEventId: Record<
+  string,
+  Record<string, () => Promise<string>>
+> = {
+  "raycafe-taichung-10-19": taichungGalleryImageLoaders,
+};
+
+export function getEventImages(event: TaiwanEvent): string[] {
   if (event.imageUrls && event.imageUrls.length > 0) return event.imageUrls;
   if (event.imageUrl) return [event.imageUrl];
   return [];
+}
+
+export async function loadEventGalleryImages(
+  eventId: string,
+): Promise<string[]> {
+  const loaders = galleryImageLoadersByEventId[eventId];
+  if (!loaders) return [];
+
+  return Promise.all(
+    Object.entries(loaders)
+      .sort(([leftPath], [rightPath]) => leftPath.localeCompare(rightPath))
+      .map(([, loadImage]) => loadImage()),
+  );
 }
 
 export function getEventTime(date: string) {
@@ -22,7 +44,7 @@ export function isPastEvent(date: string, referenceDate = new Date()) {
 }
 
 export function hasEventGallery(event: TaiwanEvent) {
-  return Boolean(event.galleryImages && event.galleryImages.length > 0);
+  return Boolean(event.hasGallery);
 }
 
 export function getEventDetailPath(eventId: string) {

@@ -1,20 +1,47 @@
+import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import raycastWhiteLogo from "../../assets/raycast-white.svg";
 import { taiwanEvents } from "../../data/events";
+import { getEventImages, loadEventGalleryImages } from "../../utils/events";
+
+async function loadHeroGalleryPhotos() {
+  const photoGroups = await Promise.all(
+    taiwanEvents.map(async (event) => {
+      if (event.hasGallery) return loadEventGalleryImages(event.id);
+      return getEventImages(event);
+    }),
+  );
+
+  return photoGroups.flat().slice(0, 6);
+}
 
 export function HeroSection() {
-  const heroGalleryPhotos = taiwanEvents
-    .flatMap((event) => {
-      if (event.galleryImages && event.galleryImages.length > 0) {
-        return event.galleryImages;
-      }
-      return event.imageUrl ? [event.imageUrl] : [];
-    })
-    .slice(0, 6);
-  const marqueePhotos =
-    heroGalleryPhotos.length > 0
-      ? [...heroGalleryPhotos, ...heroGalleryPhotos]
-      : [];
+  const [heroGalleryPhotos, setHeroGalleryPhotos] = useState<string[]>([]);
+
+  useEffect(() => {
+    let isStale = false;
+
+    loadHeroGalleryPhotos().then((photos) => {
+      if (!isStale) setHeroGalleryPhotos(photos);
+    });
+
+    return () => {
+      isStale = true;
+    };
+  }, []);
+
+  const marqueePhotos = useMemo(() => {
+    if (heroGalleryPhotos.length === 0) return [];
+
+    const marqueeSourcePhotos = Array.from(
+      { length: Math.ceil(6 / heroGalleryPhotos.length) },
+      () => heroGalleryPhotos,
+    )
+      .flat()
+      .slice(0, 6);
+
+    return [...marqueeSourcePhotos, ...marqueeSourcePhotos];
+  }, [heroGalleryPhotos]);
 
   return (
     <section className="bg-background relative overflow-hidden py-24 md:py-32 lg:py-40">
@@ -40,8 +67,8 @@ export function HeroSection() {
       >
         <motion.div
           className="mb-8 flex items-center gap-2 rounded-full border border-white/10 bg-white/4 px-4 py-1.5 shadow-[0_14px_34px_-22px_rgba(0,0,0,0.95),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl"
-          initial={{ opacity: 0, y: 22, filter: "blur(6px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          initial={{ opacity: 0, y: 22 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.08 }}
         >
           <img
@@ -56,8 +83,8 @@ export function HeroSection() {
 
         <motion.div
           className="relative"
-          initial={{ opacity: 0, y: 22, filter: "blur(6px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          initial={{ opacity: 0, y: 22 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.2 }}
         >
           <div

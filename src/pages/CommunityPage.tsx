@@ -1,22 +1,20 @@
+import { lazy, Suspense } from "react";
 import { HeroSection } from "../components/community/HeroSection";
-import { MazeSection } from "../components/community/MazeSection";
 import { EventsSection } from "../components/community/EventsSection";
 import { AmbassadorsSection } from "../components/community/AmbassadorsSection";
 import { NewsletterSection } from "../components/community/NewsletterSection";
-import { motion } from "framer-motion";
 
-function FadeInSection({ children }: { children: React.ReactNode }) {
-  return (
-    <motion.section
-      initial={{ opacity: 0, y: 36 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.22 }}
-      transition={{ duration: 0.4 }}
-    >
-      {children}
-    </motion.section>
-  );
-}
+const GlobalEventsSection = lazy(() =>
+  import("../components/community/GlobalEventsSection").then((m) => ({
+    default: m.GlobalEventsSection,
+  })),
+);
+
+const MazeSection = lazy(() =>
+  import("../components/community/MazeSection").then((m) => ({
+    default: m.MazeSection,
+  })),
+);
 
 export function CommunityPage() {
   return (
@@ -29,18 +27,15 @@ export function CommunityPage() {
 
       <div className="relative z-10">
         <HeroSection />
-        <FadeInSection>
-          <EventsSection />
-        </FadeInSection>
-        <FadeInSection>
-          <AmbassadorsSection />
-        </FadeInSection>
-        <FadeInSection>
-          <NewsletterSection />
-        </FadeInSection>
-        <FadeInSection>
+        <EventsSection />
+        <AmbassadorsSection />
+        <Suspense fallback={null}>
+          <GlobalEventsSection />
+        </Suspense>
+        <NewsletterSection />
+        <Suspense fallback={null}>
           <MazeSection />
-        </FadeInSection>
+        </Suspense>
       </div>
     </main>
   );

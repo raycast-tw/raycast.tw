@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/luma-events",
+      "destination": "https://api2.luma.com/calendar/get-items?calendar_api_id=cal-KwZeQ0HC9LFQ3Fk"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

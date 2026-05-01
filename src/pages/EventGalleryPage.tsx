@@ -1,13 +1,25 @@
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
 import { ArrowLeft, Calendar, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 import { taiwanEvents } from "../data/events";
-import { getEventImages } from "../utils/events";
+import { loadEventGalleryImages } from "../utils/events";
 import { useSeo } from "../utils/useSeo";
+
+interface GalleryState {
+  eventId: string;
+  images: string[];
+  isLoading: boolean;
+}
 
 export function EventGalleryPage() {
   const { id } = useParams<{ id: string }>();
   const event = taiwanEvents.find((item) => item.id === id);
+  const [galleryState, setGalleryState] = useState<GalleryState>({
+    eventId: "",
+    images: [],
+    isLoading: true,
+  });
 
   useSeo(
     event
@@ -36,6 +48,25 @@ export function EventGalleryPage() {
       : {},
   );
 
+  useEffect(() => {
+    if (!event) return;
+
+    let isStale = false;
+
+    loadEventGalleryImages(event.id).then((images) => {
+      if (isStale) return;
+      setGalleryState({
+        eventId: event.id,
+        images,
+        isLoading: false,
+      });
+    });
+
+    return () => {
+      isStale = true;
+    };
+  }, [event]);
+
   if (!event) {
     return (
       <motion.div
@@ -57,7 +88,10 @@ export function EventGalleryPage() {
     );
   }
 
-  const galleryImages = getEventImages(event, { includeGallery: true });
+  const galleryImages =
+    galleryState.eventId === event.id ? galleryState.images : [];
+  const isGalleryLoading =
+    galleryState.eventId !== event.id || galleryState.isLoading;
 
   return (
     <div className="relative overflow-hidden">
@@ -138,7 +172,16 @@ export function EventGalleryPage() {
 
           {/* Gallery grid */}
           <div className="mt-10 grid gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {galleryImages.length > 0 ? (
+            {isGalleryLoading ? (
+              <motion.div
+                className="rounded-[22px] border border-dashed border-white/18 bg-white/3 p-8 text-white/60"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.4, delay: 0.48 }}
+              >
+                照片載入中
+              </motion.div>
+            ) : galleryImages.length > 0 ? (
               galleryImages.map((image, index) => (
                 <motion.figure
                   key={`${event.id}-gallery-${index}`}

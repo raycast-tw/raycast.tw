@@ -13,12 +13,12 @@ export function GlobeSection() {
     if (!canvasRef.current) return;
 
     const canvas = canvasRef.current;
-    const pixelRatio = window.devicePixelRatio || 1;
+    const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
 
     globeRef.current = createGlobe(canvas, {
       devicePixelRatio: pixelRatio,
-      width: canvas.offsetWidth * 2 * pixelRatio,
-      height: canvas.offsetHeight * 2 * pixelRatio,
+      width: canvas.offsetWidth * pixelRatio,
+      height: canvas.offsetHeight * pixelRatio,
       phi: 0,
       theta: 0.3,
       dark: 1,
@@ -45,8 +45,18 @@ export function GlobeSection() {
     };
     animate();
 
+    const resizeObserver = new ResizeObserver(() => {
+      if (!canvasRef.current) return;
+      globeRef.current?.update({
+        width: canvasRef.current.offsetWidth * pixelRatio,
+        height: canvasRef.current.offsetHeight * pixelRatio,
+      });
+    });
+    resizeObserver.observe(canvas);
+
     return () => {
       cancelAnimationFrame(animationId);
+      resizeObserver.disconnect();
       globeRef.current?.destroy();
     };
   }, []);
