@@ -105,6 +105,22 @@ async function generateOgImages(fonts: FontEntry[], logoDataUri: string) {
   const ogDir = path.join(distDir, "og");
   await fs.mkdir(ogDir, { recursive: true });
 
+  // Homepage / default OG (also overwrites public/og-image.png so dev stays in sync)
+  const homeInput: OgInput = {
+    kicker: "TAIWAN",
+    badge: "COMMUNITY",
+    title: "連結台灣的 Raycast 使用者，分享更有效率的用法。",
+    meta: "Newsletter · Events · Community",
+    theme: "crimson",
+    logoDataUri,
+  };
+  await renderOg(fonts, homeInput, path.join(distDir, "og-image.png"));
+  await renderOg(
+    fonts,
+    homeInput,
+    path.join(repoRoot, "public", "og-image.png"),
+  );
+
   // Newsletter detail OG images
   for (const n of newsletterMeta) {
     const typeLabel = n.type === "monthly" ? "MONTHLY" : "WEEKLY";
@@ -224,7 +240,7 @@ function buildRoutes(): RouteSeo[] {
     path: "/newsletter",
     title: "電子報總覽：Raycast 月報與週報",
     description:
-      "Raycast Community Taiwan 整理的官方月報與週報，依時間倒序排列，快速掌握 Raycast 平台動態、社群活動與實用技巧。",
+      "Raycast Community Taiwan 整理的官方月報與週報，快速掌握 Raycast 平台動態、社群活動與實用技巧。",
     image: `${SITE_URL}/og/newsletter/index.png`,
     type: "website",
     jsonLd: [
@@ -232,8 +248,7 @@ function buildRoutes(): RouteSeo[] {
         "@context": "https://schema.org",
         "@type": "CollectionPage",
         name: "Raycast 電子報總覽",
-        description:
-          "Raycast Community Taiwan 整理的官方月報與週報，依時間倒序排列。",
+        description: "Raycast Community Taiwan 整理的官方月報與週報。",
         url: `${SITE_URL}/newsletter`,
         inLanguage: "zh-TW",
         isPartOf: {

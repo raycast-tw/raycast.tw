@@ -13,7 +13,7 @@ type EventFilter = "all" | "upcoming" | "past";
 const filterOptions: Array<{ id: EventFilter; label: string }> = [
   { id: "all", label: "全部" },
   { id: "upcoming", label: "即將舉辦" },
-  { id: "past", label: "過往精選" },
+  { id: "past", label: "過往活動" },
 ];
 
 function sortByNearestDate(
@@ -128,7 +128,7 @@ export function EventsIndexPage() {
             </h1>
             <p className="text-light-gray mt-5 max-w-[620px] text-[16px] leading-[1.7] font-medium tracking-[0.2px] md:text-[20px]">
               Raycast Taiwan 的線下聚會、Raycafé
-              與工作坊。即將舉辦與過往精選一次掌握。
+              與工作坊。掌握即將舉辦的場次，回顧過往精選紀錄。
             </p>
           </motion.div>
 

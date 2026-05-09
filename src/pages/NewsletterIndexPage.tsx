@@ -35,7 +35,7 @@ export function NewsletterIndexPage() {
   useSeo({
     title: "電子報總覽：Raycast 月報與週報",
     description:
-      "Raycast Community Taiwan 整理的官方月報與週報，依時間倒序排列，快速掌握 Raycast 平台動態、社群活動與實用技巧。",
+      "Raycast Community Taiwan 整理的官方月報與週報，快速掌握 Raycast 平台動態、社群活動與實用技巧。",
     path: "/newsletter",
     image: "/og/newsletter/index.png",
     jsonLd: [
@@ -43,8 +43,7 @@ export function NewsletterIndexPage() {
         "@context": "https://schema.org",
         "@type": "CollectionPage",
         name: "Raycast 電子報總覽",
-        description:
-          "Raycast Community Taiwan 整理的官方月報與週報，依時間倒序排列。",
+        description: "Raycast Community Taiwan 整理的官方月報與週報。",
         url: `${SITE_URL}/newsletter`,
         inLanguage: "zh-TW",
         isPartOf: {
@@ -103,8 +102,7 @@ export function NewsletterIndexPage() {
               電子報總覽
             </h1>
             <p className="text-light-gray mt-5 max-w-[620px] text-[16px] leading-[1.7] font-medium tracking-[0.2px] md:text-[20px]">
-              Raycast
-              月報與週報全集，依時間倒序排列。掌握平台動態、社群活動與實用技巧。
+              Raycast 月報與週報合集，掌握平台動態、社群活動與實用技巧。
             </p>
           </motion.div>
 
