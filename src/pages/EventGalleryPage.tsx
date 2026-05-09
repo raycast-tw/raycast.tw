@@ -3,8 +3,9 @@ import { Link, useParams } from "react-router";
 import { ArrowLeft, Calendar, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 import { taiwanEvents } from "../data/events";
-import { loadEventGalleryImages } from "../utils/events";
+import { loadEventGalleryImages, isPastEvent } from "../utils/events";
 import { useSeo } from "../utils/useSeo";
+import { SITE_URL } from "../utils/siteUrl";
 
 interface GalleryState {
   eventId: string;
@@ -23,28 +24,71 @@ export function EventGalleryPage() {
 
   useSeo(
     event
-      ? {
-          title: `${event.title} 活動照片`,
-          description: event.description,
-          path: `/events/${event.id}`,
-          jsonLd: {
+      ? (() => {
+          const url = `${SITE_URL}/events/${event.id}`;
+          const image = `${SITE_URL}/og/events/${event.id}.png`;
+          const isPast = isPastEvent(event.date, new Date());
+          const eventLd = {
             "@context": "https://schema.org",
             "@type": "Event",
             name: event.title,
             startDate: event.date,
+            eventStatus: isPast
+              ? "https://schema.org/EventCompleted"
+              : "https://schema.org/EventScheduled",
+            eventAttendanceMode:
+              "https://schema.org/OfflineEventAttendanceMode",
             description: event.description,
             location: {
               "@type": "Place",
               name: event.location,
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: event.location,
+                addressCountry: "TW",
+              },
             },
-            url: `https://raycast.tw/events/${event.id}`,
+            url,
+            image: event.imageUrl ? [event.imageUrl, image] : [image],
+            inLanguage: "zh-TW",
             organizer: {
               "@type": "Organization",
               name: "Raycast Community Taiwan",
-              url: "https://raycast.tw",
+              url: SITE_URL,
             },
-          },
-        }
+          };
+          const breadcrumb = {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "首頁",
+                item: `${SITE_URL}/`,
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "活動",
+                item: `${SITE_URL}/events`,
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: event.title,
+                item: url,
+              },
+            ],
+          };
+          return {
+            title: `${event.title} 活動照片`,
+            description: event.description,
+            path: `/events/${event.id}`,
+            image,
+            jsonLd: [eventLd, breadcrumb],
+          };
+        })()
       : {},
   );
 
@@ -79,10 +123,10 @@ export function EventGalleryPage() {
           找不到活動照片頁
         </h2>
         <Link
-          to="/"
+          to="/events"
           className="text-foreground inline-flex items-center justify-center rounded-full px-6 py-2.5 text-[16px] font-semibold tracking-[0.3px] shadow-[rgba(255,255,255,0.1)_0px_1px_0px_0px_inset] transition-opacity hover:opacity-60"
         >
-          返回首頁
+          返回活動
         </Link>
       </motion.div>
     );
@@ -113,7 +157,7 @@ export function EventGalleryPage() {
             transition={{ duration: 0.4, delay: 0.05 }}
           >
             <Link
-              to="/#events"
+              to="/events"
               className="text-subtle mb-4 inline-flex items-center gap-1 rounded-full text-[14px] font-semibold transition hover:text-white"
             >
               <ArrowLeft className="size-4" />

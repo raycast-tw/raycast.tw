@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { Link } from "react-router";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { SectionTag } from "../ui/SectionTag";
 import { EventCard } from "../ui/EventCard";
 import { taiwanEvents } from "../../data/events";
@@ -72,6 +73,13 @@ export function EventsSection() {
             <p className="text-light-gray mt-5 max-w-[560px] text-[16px] leading-[1.7] font-medium tracking-[0.2px] md:text-[20px]">
               從即將舉辦到過往精選，一次掌握 Raycast Taiwan 活動資訊。
             </p>
+            <Link
+              to="/events"
+              className="mt-5 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/3 px-4 py-1.5 text-[13px] font-semibold text-white/70 transition hover:border-white/20 hover:bg-white/8 hover:text-white"
+            >
+              查看全部活動
+              <ArrowUpRight className="size-3.5" />
+            </Link>
           </div>
 
           <div className={carouselClasses.filterRail}>

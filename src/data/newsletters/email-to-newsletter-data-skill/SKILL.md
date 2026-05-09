@@ -9,11 +9,11 @@ Use this skill for this repo when a user wants to turn a Raycast email newslette
 
 ## Files To Update
 
-- Main data source: `src/data/newsletters/index.ts`
+- Metadata source: `src/data/newsletters/meta.ts` (the `newsletterMeta` array)
 - Monthly HTML content: `src/data/newsletters/monthly-YYYY-MM.html`
 - Weekly HTML content: `src/data/newsletters/weekly-YYYY-rw###.html`
 
-Every issue, regardless of type, requires both an HTML content file and an entry in `index.ts`.
+Every issue, regardless of type, requires both an HTML content file and an entry in `meta.ts`. `src/data/newsletters/index.ts` is just glue — do not edit it for new issues.
 
 ## Source Extraction Rules
 
@@ -32,9 +32,9 @@ For Raycast Weekly:
 - If the HTML part contains a meaningful hero image or post image, include it.
 - Do not import author avatars, app-store badges, tracking pixels, or social media icons as article images.
 
-## Output Shape In `src/data/newsletters/index.ts`
+## Output Shape In `src/data/newsletters/meta.ts`
 
-Each entry must match the existing `Newsletter` type. `content` is loaded via the `html()` helper — do not inline HTML strings:
+Each entry must match the `NewsletterMeta` type defined at the top of the file. `content` is NOT part of the metadata — it is loaded automatically from the matching `.html` file at build time via the `html()` helper in `index.ts`.
 
 ```ts
 {
@@ -46,7 +46,6 @@ Each entry must match the existing `Newsletter` type. `content` is loaded via th
   kicker: "Raycast March Update",
   summary: "...",
   author: "Raycast Team",
-  content: html("monthly-2026-03"),
 }
 ```
 
@@ -55,6 +54,8 @@ For weekly entries, also include:
 ```ts
 episode: "RW005";
 ```
+
+The metadata is also consumed by the SEO build (`scripts/build-seo.ts`) to generate per-issue prerendered HTML, OG images, sitemap entries, and Atom feed entries. Inaccurate `date`, `summary`, or `author` will leak into all of those.
 
 ## Field Rules
 
@@ -133,6 +134,44 @@ Avoid:
 - email-specific table markup
 - copied tracking params unless there is no cleaner URL available
 
+## SEO Content Rules
+
+The detail page is prerendered into `dist/newsletter/<id>/index.html` for crawlers, so the HTML inside `content` is what Google and AI overviews actually see. Treat it as primary article markup, not as decorative copy.
+
+### Heading hierarchy
+
+- The page already renders an `<h1>` with the issue title. Inside `content`, start at `<h2>` for top-level sections and `<h3>` for sub-sections.
+- Never use `<h1>` inside `content` (would create duplicate H1s on the page).
+- Do not skip levels (`<h2>` → `<h4>`).
+- Use headings for real sections only. Do not turn highlighted phrases into headings.
+
+### Anchor text
+
+- Link text must describe the destination. Avoid `點此`, `這裡`, `了解更多`, `click here`.
+  - Bad: `<a href="...">點此</a> 看新版 Raycast`
+  - Good: `<a href="...">新版 Raycast 公告</a>`
+- Use the actual product / feature / extension name as the anchor when possible. Crawlers and screen readers both rely on this.
+- Do not link the same URL multiple times in one paragraph; pick the most descriptive instance.
+
+### Images
+
+- Every `<img>` MUST have a meaningful `alt` in Traditional Chinese describing what the image shows or demonstrates.
+- Decorative-only images are rare in newsletters — if one truly is decorative, use `alt=""` (empty, not missing).
+- Bad: `alt="image"`, `alt="圖"`, missing `alt`.
+- Good: `alt="Raycast Glaze 介面截圖：左側為主題列表，右側為預覽畫面"`.
+- Prefer descriptive alt over redundant captions. Do not duplicate the surrounding paragraph text in alt.
+
+### Lists vs paragraphs
+
+- Use `<ul>` for unordered lists of features / extensions / bullet points. Do not fake lists with `<p>• …</p>`.
+- Use `<ol>` only when order matters (steps, ranking).
+
+### Other
+
+- No empty paragraphs (`<p></p>`) or `<br>` for vertical spacing — let CSS handle spacing.
+- Wrap inline command names in `<code>` (also a SEO signal that the term is a code identifier).
+- Do not put long URLs as visible link text. Wrap them with descriptive text and put the URL in `href`.
+
 ## Translation Rules
 
 Translate the explanatory copy into Traditional Chinese, but keep these in original language where appropriate:
@@ -201,13 +240,14 @@ The file contains only the body HTML (no `<html>`/`<body>` wrapper). It is loade
    - all meaningful content images
 3. Draft Traditional Chinese summary and HTML content.
 4. Write the HTML content into `src/data/newsletters/<id>.html`.
-5. Add a metadata entry (without inline `content`) to `src/data/newsletters/index.ts` using `content: html("<id>")`.
+5. Add a metadata entry to `src/data/newsletters/meta.ts` (do not edit `index.ts`).
 6. Check the detail-page rendering expectations:
-   - links present
-   - images present
+   - links present, with descriptive anchor text
+   - images present, every `<img>` has descriptive `alt`
+   - heading hierarchy starts at `<h2>` (no `<h1>` inside content)
    - no email table markup
    - no missing closing tags
-7. Run formatting if needed and then run `npm run build`.
+7. Run formatting if needed and then run `npm run build` (this also runs `tsx scripts/build-seo.ts` to produce per-issue HTML, OG image, sitemap, and feed entries).
 
 ## Common Mistakes To Avoid
 
@@ -217,13 +257,17 @@ The file contains only the body HTML (no `<html>`/`<body>` wrapper). It is loade
 - Importing tracking pixels or footer badges as article images
 - Translating command names too aggressively
 - Using the wrong send date
-- Adding an entry to `index.ts` but forgetting to create the corresponding `.html` file (causes `html()` to return an empty string silently)
+- Adding an entry to `meta.ts` but forgetting to create the corresponding `.html` file (causes `html()` to return an empty string silently)
+- Editing `index.ts` instead of `meta.ts` for new entries
+- Using `<h1>` inside `content` (the page already provides one — would create duplicate H1s)
+- Anchor text like `這裡` / `點此` / `click here` instead of describing the link target
+- Missing or generic `alt` on `<img>` tags
 - Summarizing too hard and dropping notable sections like `Team Picks`, `In Other News`, or extension demos
 - Copying raw email HTML tables into `content`
 
 ## Repo-Specific Conventions
 
-- Newsletter HTML content lives in individual `.html` files under `src/data/newsletters/`. Metadata lives in `src/data/newsletters/index.ts`. Content is loaded at build time via `import.meta.glob` — never inline HTML strings directly into `index.ts`.
+- Newsletter HTML content lives in individual `.html` files under `src/data/newsletters/`. Metadata lives in `src/data/newsletters/meta.ts`. `index.ts` is glue that joins them via `import.meta.glob` — never inline HTML strings directly into `meta.ts` or `index.ts`.
 - The detail page styles links as red already, so plain semantic `<a>` tags are enough.
 - The detail page renders `<img>` tags directly, so content images belong inside `content`.
 - Existing monthly snapshots in `src/data/newsletters/` are the best local examples to mirror.
