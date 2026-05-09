@@ -28,6 +28,11 @@ const navLinks = [
   { label: "功能探索", href: "/#features", id: "features", desktopOnly: true },
 ];
 
+const archiveLinks = [
+  { label: "活動總覽", href: "/events" },
+  { label: "電子報總覽", href: "/newsletter" },
+];
+
 export function Header() {
   const { pathname } = useLocation();
   const isHomePage = pathname === "/";
@@ -100,7 +105,7 @@ export function Header() {
               </span>
             </Link>
 
-            {isHomePage && (
+            {isHomePage ? (
               <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 md:flex">
                 {navLinks.map((link) => (
                   <a
@@ -122,6 +127,30 @@ export function Header() {
                     />
                   </a>
                 ))}
+              </nav>
+            ) : (
+              <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 md:flex">
+                {archiveLinks.map((link) => {
+                  const isActive = pathname.startsWith(link.href);
+                  return (
+                    <Link
+                      key={link.href}
+                      to={link.href}
+                      className={`group relative text-[16px] font-medium tracking-[0.3px] transition-colors hover:text-white ${
+                        isActive ? "text-white" : "text-white/58"
+                      }`}
+                    >
+                      {link.label}
+                      <span
+                        className={`absolute -bottom-1.5 left-0 h-0.5 w-full rounded-full bg-[linear-gradient(90deg,rgba(255,99,99,0.9)_0%,rgba(255,154,154,0.86)_100%)] transition ${
+                          isActive
+                            ? "scale-x-100 opacity-100"
+                            : "scale-x-70 opacity-0 group-hover:scale-x-100 group-hover:opacity-100"
+                        }`}
+                      />
+                    </Link>
+                  );
+                })}
               </nav>
             )}
 

@@ -157,9 +157,9 @@ export function EventCard({
         )}
       </div>
 
-      <h4 className="mt-6 text-[28px] leading-[1.08] font-medium tracking-[-0.02em] text-white">
+      <h3 className="mt-6 text-[28px] leading-[1.08] font-medium tracking-[-0.02em] text-white">
         {event.title}
-      </h4>
+      </h3>
 
       <div className="mt-4 flex flex-col gap-2 text-[14px] font-medium tracking-[0.2px] text-white/55">
         <span className="flex items-center gap-1.5">

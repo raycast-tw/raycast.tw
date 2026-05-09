@@ -67,9 +67,9 @@ export function NewsletterCard({ newsletter, index = 0 }: NewsletterCardProps) {
             )}
           </div>
 
-          <h4 className="mt-4 w-full text-[31px] leading-[1.08] font-medium tracking-[-0.02em] text-white">
+          <h3 className="mt-4 w-full text-[31px] leading-[1.08] font-medium tracking-[-0.02em] text-white">
             {newsletter.title}
-          </h4>
+          </h3>
 
           <p className="mt-4 max-w-[28ch] text-[15px] leading-[1.8] font-medium tracking-[0.2px] text-white/82">
             {newsletter.summary}

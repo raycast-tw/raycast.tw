@@ -3,7 +3,9 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import { MotionConfig } from "framer-motion";
 import { CommunityPage } from "./pages/CommunityPage";
 import { NewsletterDetailPage } from "./pages/NewsletterDetailPage";
+import { NewsletterIndexPage } from "./pages/NewsletterIndexPage";
 import { EventGalleryPage } from "./pages/EventGalleryPage";
+import { EventsIndexPage } from "./pages/EventsIndexPage";
 import { Header } from "./components/layout/Header";
 import { Footer } from "./components/layout/Footer";
 import { ScrollManager } from "./components/layout/ScrollManager";
@@ -45,7 +47,9 @@ function AppContent() {
       <div id="main-content">
         <Routes>
           <Route path="/" element={<CommunityPage />} />
+          <Route path="/newsletter" element={<NewsletterIndexPage />} />
           <Route path="/newsletter/:id" element={<NewsletterDetailPage />} />
+          <Route path="/events" element={<EventsIndexPage />} />
           <Route path="/events/:id" element={<EventGalleryPage />} />
         </Routes>
       </div>

@@ -2,8 +2,9 @@ import { useEffect, useRef } from "react";
 import { useParams, Link } from "react-router";
 import { ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
-import { newsletters } from "../data/newsletters/index";
+import { newsletters, parseAuthor } from "../data/newsletters/index";
 import { useSeo } from "../utils/useSeo";
+import { SITE_URL } from "../utils/siteUrl";
 
 export function NewsletterDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -13,28 +14,74 @@ export function NewsletterDetailPage() {
 
   useSeo(
     newsletter
-      ? {
-          title: newsletter.title,
-          description: newsletter.summary,
-          path: `/newsletter/${newsletter.id}`,
-          jsonLd: {
+      ? (() => {
+          const url = `${SITE_URL}/newsletter/${newsletter.id}`;
+          const image = `${SITE_URL}/og/newsletter/${newsletter.id}.png`;
+          const { name: authorName, publisher: authorPublisher } = parseAuthor(
+            newsletter.author,
+          );
+          const articleType =
+            newsletter.type === "weekly" ? "NewsletterArticle" : "Article";
+          const article = {
             "@context": "https://schema.org",
-            "@type": "Article",
+            "@type": articleType,
             headline: newsletter.title,
             description: newsletter.summary,
             datePublished: newsletter.date,
-            url: `https://raycast.tw/newsletter/${newsletter.id}`,
+            dateModified: newsletter.date,
+            inLanguage: "zh-TW",
+            url,
+            image,
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": url,
+            },
             author: {
-              "@type": "Organization",
-              name: newsletter.author,
+              "@type": "Person",
+              name: authorName,
             },
             publisher: {
               "@type": "Organization",
-              name: "Raycast Community Taiwan",
-              url: "https://raycast.tw",
+              name: authorPublisher ?? "Raycast Community Taiwan",
+              url: SITE_URL,
+              logo: {
+                "@type": "ImageObject",
+                url: `${SITE_URL}/og-image.png`,
+              },
             },
-          },
-        }
+          };
+          const breadcrumb = {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "首頁",
+                item: `${SITE_URL}/`,
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "電子報",
+                item: `${SITE_URL}/newsletter`,
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: newsletter.title,
+                item: url,
+              },
+            ],
+          };
+          return {
+            title: newsletter.title,
+            description: newsletter.summary,
+            path: `/newsletter/${newsletter.id}`,
+            image,
+            jsonLd: [article, breadcrumb],
+          };
+        })()
       : {},
   );
 
@@ -85,10 +132,10 @@ export function NewsletterDetailPage() {
           找不到這篇文章
         </h2>
         <Link
-          to="/"
+          to="/newsletter"
           className="text-foreground inline-flex items-center justify-center rounded-full px-6 py-2.5 text-[16px] font-semibold tracking-[0.3px] shadow-[rgba(255,255,255,0.1)_0px_1px_0px_0px_inset] transition-opacity hover:opacity-60"
         >
-          ← 返回首頁
+          ← 返回電子報
         </Link>
       </motion.div>
     );
@@ -123,11 +170,11 @@ export function NewsletterDetailPage() {
             transition={{ duration: 0.4, delay: 0.05 }}
           >
             <Link
-              to="/"
+              to="/newsletter"
               className="text-subtle mb-6 inline-flex items-center gap-1 rounded-full text-[14px] font-semibold transition hover:text-white"
             >
               <ArrowLeft className="size-4" />
-              返回
+              返回電子報
             </Link>
           </motion.div>
 

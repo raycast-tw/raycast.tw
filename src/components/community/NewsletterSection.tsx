@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { Link } from "react-router";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { SectionTag } from "../ui/SectionTag";
 import { NewsletterCard } from "../ui/NewsletterCard";
 import { newsletters } from "../../data/newsletters/index";
@@ -51,6 +52,13 @@ export function NewsletterSection() {
             <p className="text-light-gray mt-5 max-w-[560px] text-[16px] leading-[1.7] font-medium tracking-[0.2px] md:text-[20px]">
               精選月報與週報，快速掌握社群動態與實用技巧。
             </p>
+            <Link
+              to="/newsletter"
+              className="mt-5 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/3 px-4 py-1.5 text-[13px] font-semibold text-white/70 transition hover:border-white/20 hover:bg-white/8 hover:text-white"
+            >
+              查看全部電子報
+              <ArrowUpRight className="size-3.5" />
+            </Link>
           </div>
 
           <div className={carouselClasses.filterRail}>

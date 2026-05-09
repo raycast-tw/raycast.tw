@@ -1,16 +1,17 @@
 import raycastLogo from "../../assets/raycast.svg";
 import { motion } from "framer-motion";
+import { Link } from "react-router";
+
+const internalLinks = {
+  title: "本站導覽",
+  links: [
+    { label: "電子報總覽", href: "/newsletter", internal: true },
+    { label: "活動總覽", href: "/events", internal: true },
+    { label: "RSS Feed", href: "/feed.xml", internal: false, external: false },
+  ],
+};
 
 const footerLinks = {
-  communityTaiwan: {
-    title: "Raycast 臺灣社群",
-    links: [
-      {
-        label: "Raycast Taiwan Threads",
-        href: "https://www.threads.com/@raycast_taiwan",
-      },
-    ],
-  },
   raycast: {
     title: "Raycast",
     links: [
@@ -27,6 +28,15 @@ const footerLinks = {
       { label: "Luma", href: "https://luma.com/raycast" },
     ],
   },
+  communityTaiwan: {
+    title: "Raycast 臺灣社群",
+    links: [
+      {
+        label: "Raycast Taiwan Threads",
+        href: "https://www.threads.com/@raycast_taiwan",
+      },
+    ],
+  },
 };
 
 export function Footer() {
@@ -39,7 +49,7 @@ export function Footer() {
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
       <div className="container py-16">
-        <div className="grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-[1.3fr_repeat(3,minmax(0,1fr))]">
+        <div className="grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-[1.3fr_repeat(4,minmax(0,1fr))]">
           <div className="max-w-[330px]">
             <div className="flex items-center gap-2">
               <img
@@ -54,6 +64,33 @@ export function Footer() {
             <p className="text-light-gray/90 mt-4 text-[15px] leading-[1.65] font-medium tracking-[0.2px]">
               連結台灣 Raycast 使用者，一起交流實用技巧與工作流。
             </p>
+          </div>
+
+          <div>
+            <h5 className="text-foreground text-[15px] font-semibold tracking-[0.12px]">
+              {internalLinks.title}
+            </h5>
+            <ul className="mt-4 flex flex-col gap-2.5">
+              {internalLinks.links.map((link) => (
+                <li key={link.label}>
+                  {link.internal ? (
+                    <Link
+                      to={link.href}
+                      className="text-subtle hover:text-foreground text-[14px] font-medium tracking-[0.2px] transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  ) : (
+                    <a
+                      href={link.href}
+                      className="text-subtle hover:text-foreground text-[14px] font-medium tracking-[0.2px] transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  )}
+                </li>
+              ))}
+            </ul>
           </div>
 
           {Object.values(footerLinks).map((section) => (

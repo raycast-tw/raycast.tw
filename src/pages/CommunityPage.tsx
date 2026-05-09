@@ -3,6 +3,8 @@ import { HeroSection } from "../components/community/HeroSection";
 import { EventsSection } from "../components/community/EventsSection";
 import { AmbassadorsSection } from "../components/community/AmbassadorsSection";
 import { NewsletterSection } from "../components/community/NewsletterSection";
+import { useSeo } from "../utils/useSeo";
+import { SITE_URL } from "../utils/siteUrl";
 
 const GlobalEventsSection = lazy(() =>
   import("../components/community/GlobalEventsSection").then((m) => ({
@@ -17,6 +19,34 @@ const MazeSection = lazy(() =>
 );
 
 export function CommunityPage() {
+  useSeo({
+    path: "/",
+    image: "/og-image.png",
+    jsonLd: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        name: "Raycast Community Taiwan",
+        url: SITE_URL,
+        logo: `${SITE_URL}/og-image.png`,
+        description:
+          "連結台灣的 Raycast 使用者，分享更有效率的用法。探索功能、參與活動，找到一起成長的夥伴。",
+        sameAs: ["https://www.threads.com/@raycast_taiwan"],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: "Raycast Community Taiwan",
+        url: SITE_URL,
+        inLanguage: "zh-TW",
+        publisher: {
+          "@type": "Organization",
+          name: "Raycast Community Taiwan",
+        },
+      },
+    ],
+  });
+
   return (
     <main className="relative overflow-clip">
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
