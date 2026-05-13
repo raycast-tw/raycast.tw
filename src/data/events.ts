@@ -45,4 +45,19 @@ export const taiwanEvents: TaiwanEvent[] = [
     imageUrl:
       "https://images.lumacdn.com/event-covers/mc/59658ddc-3633-410e-af47-ff6fca159e5f.png",
   },
+  {
+    id: "rayboba-taichung-05-30",
+    title: "Rayboba Taichung",
+    date: "2026-05-30",
+    time: "14:00 - 17:00",
+    location: "台中 · 西區",
+    description:
+      "Raycast 在地社群聚會，分享 Raycast 2.0 更新、Extension 開發與最新的 Glaze。",
+    url: "https://luma.com/un1w39oy",
+    theme: "slate",
+    imageLabel: "Rayboba Taichung",
+    imageKicker: "Community Meetup",
+    imageUrl:
+      "https://images.lumacdn.com/uploads/7n/6578f061-98a2-42f4-82f5-7e7b6d1a66af.png",
+  },
 ];

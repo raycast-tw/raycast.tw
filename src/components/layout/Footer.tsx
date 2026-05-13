@@ -1,13 +1,19 @@
 import raycastLogo from "../../assets/raycast.svg";
 import { motion } from "framer-motion";
 import { Link } from "react-router";
+import { SITE_URL } from "../../utils/siteUrl";
 
 const internalLinks = {
   title: "本站導覽",
   links: [
     { label: "電子報總覽", href: "/newsletter", internal: true },
     { label: "活動總覽", href: "/events", internal: true },
-    { label: "RSS Feed", href: "/feed.xml", internal: false, external: false },
+    {
+      label: "RSS Feed",
+      href: `${SITE_URL}/feed.xml`,
+      internal: false,
+      external: false,
+    },
   ],
 };
 
