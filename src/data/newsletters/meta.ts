@@ -45,6 +45,17 @@ export const newsletterMeta: NewsletterMeta[] = [
     author: "Raycast Team",
   },
   {
+    id: "monthly-2026-04",
+    title: "Raycast 四月月報：Raycast 2.0 (beta) 來了！",
+    date: "2026-05-15",
+    type: "monthly",
+    theme: "amber",
+    kicker: "Raycast April Update",
+    summary:
+      "Pedro 帶來 Raycast 2.0 beta 公開推出的消息，並整理 Windows、iOS、美國巡迴活動與團隊精選的最新進展。",
+    author: "Raycast Team",
+  },
+  {
     id: "weekly-2026-rw001",
     title: "Raycast Weekly RW001：首期週報、Glaze 與 iOS 背景聊天",
     date: "2026-03-14",

@@ -183,6 +183,11 @@ Translate the explanatory copy into Traditional Chinese, but keep these in origi
 
 Do not over-localize command labels. Wrap command names in `<code>` when they appear as commands.
 
+For recurring newsletter section labels:
+
+- Translate `Team Picks` as `團隊精選`.
+- Do not use `團隊私藏`, which sounds too colloquial, or `團隊近況`, which implies company/team status updates rather than member picks.
+
 ## Link Rules
 
 This is important:
