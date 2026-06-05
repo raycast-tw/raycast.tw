@@ -7,11 +7,19 @@ const taichungGalleryImageLoaders = import.meta.glob<string>(
   },
 );
 
+const raybobaTaichungGalleryImageLoaders = import.meta.glob<string>(
+  "../assets/events/rayboba-taichung-05-30/*.jpg",
+  {
+    import: "default",
+  },
+);
+
 const galleryImageLoadersByEventId: Record<
   string,
   Record<string, () => Promise<string>>
 > = {
   "raycafe-taichung-10-19": taichungGalleryImageLoaders,
+  "rayboba-taichung-05-30": raybobaTaichungGalleryImageLoaders,
 };
 
 export function getEventImages(event: TaiwanEvent): string[] {

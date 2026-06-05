@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
-import { ArrowLeft, Calendar, MapPin } from "lucide-react";
+import { ArrowLeft, Calendar, MapPin, Projector } from "lucide-react";
 import { motion } from "framer-motion";
 import { taiwanEvents } from "../data/events";
 import { loadEventGalleryImages, isPastEvent } from "../utils/events";
@@ -202,6 +202,17 @@ export function EventGalleryPage() {
               <MapPin className="size-4" />
               {event.location}
             </span>
+            {event.slideUrl ? (
+              <a
+                href={event.slideUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 transition hover:text-white"
+              >
+                <Projector className="size-4" />
+                活動投影片
+              </a>
+            ) : null}
           </motion.div>
 
           {/* Description */}

@@ -12,6 +12,7 @@ export interface TaiwanEvent {
   imageUrl?: string;
   imageUrls?: string[];
   hasGallery?: boolean;
+  slideUrl?: string;
 }
 
 export const taiwanEvents: TaiwanEvent[] = [
@@ -59,5 +60,7 @@ export const taiwanEvents: TaiwanEvent[] = [
     imageKicker: "Community Meetup",
     imageUrl:
       "https://images.lumacdn.com/uploads/7n/6578f061-98a2-42f4-82f5-7e7b6d1a66af.png",
+    hasGallery: true,
+    slideUrl: "https://slides.raycast.tw/",
   },
 ];
