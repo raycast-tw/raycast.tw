@@ -56,6 +56,17 @@ export const newsletterMeta: NewsletterMeta[] = [
     author: "Raycast Team",
   },
   {
+    id: "monthly-2026-05",
+    title: "Raycast 五月月報：Focus、Color Conversion、Dictation 與更多更新",
+    date: "2026-06-12",
+    type: "monthly",
+    theme: "indigo",
+    kicker: "Raycast May Update",
+    summary:
+      "Pedro 帶來五月更新，包含 Focus 回歸、Color Conversion、Windows Dictation、iOS BYOK、Raycast 影片與社群活動消息。",
+    author: "Raycast Team",
+  },
+  {
     id: "weekly-2026-rw001",
     title: "Raycast Weekly RW001：首期週報、Glaze 與 iOS 背景聊天",
     date: "2026-03-14",
