@@ -1,7 +1,7 @@
 import { newsletterMeta, type NewsletterMeta } from "./meta";
 
 export type { NewsletterMeta };
-export { parseAuthor } from "./meta";
+export { contentTypeLabel, parseAuthor } from "./meta";
 
 const htmlFiles = import.meta.glob<string>("./*.html", {
   query: "?raw",

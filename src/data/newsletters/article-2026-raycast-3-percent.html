@@ -1,0 +1,379 @@
+<p>
+  多數人只用 <a href="https://raycast.com">Raycast</a> 做少數幾件事：啟動
+  app、快速計算、找一個 emoji，或從 Clipboard History
+  貼上內容。光是這些，已經比大多數 app
+  能提供的更多；如果你只需要這些，也完全沒問題。但 Raycast 其實還能做到更多。
+</p>
+<p>
+  上述每一項都只是一個功能完成一件工作，而多數人用到這裡就停了。不是因為他們漏掉了什麼秘密指令，
+  而是因為他們沒有把已經知道的功能連接起來。
+</p>
+<p>
+  每一項 Raycast 功能單獨使用都很好：Snippet 很方便、hotkey 很方便、Quicklink
+  也很方便。但把它們組合起來，就能完成任何單一功能都做不到的事。例如在電腦上的任何地方反白一個字，
+  按下一組
+  hotkey，查詢結果就直接出現在眼前；不必打字，也不必點擊。這才是事情真正開始變有趣的地方。
+</p>
+<p>
+  一旦開始串接功能，你就會逐漸建立一套完全個人化的電腦使用方式。從這個角度來看，Raycast
+  不再只是一個 launcher，而會成為你整天執行工作、又不必離開 flow state 的入口。
+</p>
+<p>
+  順帶一提，接下來介紹的功能除了 AI 之外都包含在免費版中；AI 也可以選擇 BYOK。
+</p>
+<p>想發揮更多 Raycast 的能力，關鍵在於組合以下功能：</p>
+<ul>
+  <li>hotkeys 與 aliases，讓任何功能都只差一次按鍵。</li>
+  <li>帶有 arguments 的 Quicklinks，把儲存的連結變成迷你 app。</li>
+  <li>Snippets 與 dynamic placeholders，建立會自動填入內容的文字資料庫。</li>
+  <li>把 Clipboard History 當成記憶，甚至是第二大腦，而不只是暫存區。</li>
+  <li>
+    多數人沒發現的內建指令，例如 Window Management、選單搜尋、截圖搜尋與
+    Calculator。
+  </li>
+  <li>Extensions，讓 Raycast 連接數千個其他 app。</li>
+  <li>AI 整合，從 Quick AI、AI Commands 到 Chat、Skills 與 Extensions。</li>
+  <li>把所有功能串在一起的鍵盤操作層。</li>
+</ul>
+<p>
+  本文翻譯自 Pedro Duarte 的
+  <a
+    href="https://ped.ro/writing/youre-probably-only-using-3-percent-of-raycast"
+    >〈You're probably only using 3% of Raycast〉</a
+  >。
+</p>
+
+<h2>鍵盤操作層</h2>
+<p>先從這裡開始。滑鼠用得越少，操作效率就越高。</p>
+<p>
+  <strong>Hotkeys。</strong>Hotkey 是全域快捷鍵，即使 Raycast 沒有開啟也能觸發。
+</p>
+<p>
+  替那幾個每天反覆使用的 command 設定 hotkey，例如用 <code>⌥ + N</code> 開啟
+  Notes、<code>⌥ + S</code> 開啟 Slack。新版 recorder 可以使用單按
+  <code>fn</code> 來啟動 Dictation；hotkey 也可以設定成連按兩次
+  modifier。Raycast 很快還會支援把左右兩側的 modifier
+  視為不同按鍵。每設定一組快捷鍵，就是逐步建立新的肌肉記憶。
+</p>
+<p>
+  這些範例使用 <code>⌥</code>，是因為 Pedro 使用 Mac；在 Windows 上可以改用
+  <code>Ctrl</code>，或任何符合自己習慣的按鍵。
+</p>
+<img
+  src="/newsletters/raycast-3-percent/slack-hotkey.jpg"
+  alt="Raycast command 設定畫面，Slack 的 hotkey 設為 Option 加 S"
+/>
+<p>
+  <strong>Hyper Key。</strong>把一個平常用不到的按鍵（通常是 Caps Lock）變成單一
+  modifier，效果等同同時按住 <code>⌃ + ⌥ + ⌘ + ⇧</code>，在 Raycast 中會以
+  <code>✦</code> 表示。
+</p>
+<p>
+  啟用後，就會多出一整層其他人幾乎不會使用的快捷鍵：<code>✦ + N</code> 開啟
+  Notes、<code>✦ + S</code> 開啟 Slack、<code>✦ + T</code>
+  開啟 Terminal。由於沒有 app 會內建這麼複雜的快捷鍵，因此幾乎不會發生衝突。前往
+  <code>Settings &gt; Keyboard &gt; Hyper Key</code>
+  即可設定。恭喜，Raycast 等於替你新增了一顆按鍵。
+</p>
+<img
+  src="/newsletters/raycast-3-percent/hyperkey-settings.jpg"
+  alt="Raycast Keyboard 設定中的 Hyper Key 設定畫面"
+/>
+<p>
+  <strong>Alias。</strong>Alias 是自行設定的簡短關鍵字，可以直接跳到指定
+  command。
+</p>
+<p>
+  例如設定 <code>et</code> 清空垃圾桶、<code>tr</code> 開啟 Translate、<code
+    >cron</code
+  >
+  開啟 Notion Calendar、<code>st</code> 瀏覽 Store，甚至可以用
+  <code>browser</code>
+  開啟目前使用的瀏覽器。即使日後更換瀏覽器，原本的肌肉記憶也不必改變。
+</p>
+<img
+  src="/newsletters/raycast-3-percent/cron-alias.jpg"
+  alt="Raycast command 設定畫面，Notion Calendar 的 alias 設為 cron"
+/>
+<p>另外還有幾組值得記住的內建快捷鍵：</p>
+<p>
+  <strong>Action Panel（<code>⌘ + K</code>）。</strong
+  >這是每個項目的操作選單。無論目前選取什麼，按下 <code>⌘ + K</code>
+  都能看到可以執行的動作。
+</p>
+<p>
+  <strong>About Menu（<code>⌘ + ⇧ + K</code>）。</strong
+  >這裡放的是目前項目的相關資訊與設定，例如設定 command、設定 extension
+  或傳送回饋。它可以在 Root Search 或任何 command 內使用，是 v2 的新功能。
+</p>
+<p>
+  當你已經深入某個 extension 四層畫面時，不必連按八次 Escape。<code
+    >⌘ + Escape</code
+  >
+  可以直接回到 Root Search。這看似只是小功能，Pedro
+  卻每天都會使用；一旦習慣，你很可能也會天天用到。
+</p>
+
+<h2>Quicklinks 就是迷你 app</h2>
+<p>
+  Quicklinks 是 Raycast
+  最被低估的功能之一，因為多數人只把它當作「儲存的書籤」。一旦真正開始使用，
+  就很難停下來。
+</p>
+<p>
+  <strong>Quicklinks。</strong>它可以儲存 URL、檔案路徑或
+  deeplink，並透過一次操作直接開啟； 加入 arguments
+  後，還能在開啟前先詢問你要輸入的內容。
+</p>
+<p>
+  基本用法是建立一個指向 <code>~/Projects/my-app</code> 的
+  Quicklink，並讓它直接在 editor 開啟，而不是交給 Finder。也可以用 deeplink
+  直接跳到 Spotify playlist 或 Slack channel，略過 app 本身的導覽流程。
+</p>
+<p>
+  比較少人使用的是 arguments。Quicklink
+  可以先要求輸入內容再開啟，例如建立一個詢問單字與語言的 Google Translate
+  Quicklink，或搜尋自己過往貼文的
+  Quicklink，直接進入搜尋結果。大約三十秒、不必寫程式，
+  就做出了一個單一用途的搜尋工具。
+</p>
+<p>
+  接著再和剪貼簿組合。先複製一個 Linear issue ID，再開啟會讀取
+  <code>{clipboard}</code>、組出完整 URL 並進入該 issue 的
+  Quicklink。你完全不會看到網址， 只會直接抵達頁面。再替它加上
+  hotkey，整套流程就只剩下：複製、按鍵、完成。
+</p>
+<p>這就是三個功能共同完成一件事。</p>
+<img
+  src="/newsletters/raycast-3-percent/quicklinks-search-tweets.jpg"
+  alt="Raycast 中用來搜尋個人貼文的 Quicklink 設定畫面"
+/>
+
+<h2>會自己填入內容的文字資料庫</h2>
+<p>
+  <strong>Snippets。</strong
+  >輸入一個關鍵字，就能在任何可輸入文字的地方展開成一整段內容。
+</p>
+<p>
+  它可以保存 email 回覆、程式碼、電子郵件地址，或每週會在 Slack
+  傳送兩次的相同訊息。不過更重要的用法，是把 Snippets
+  當成參考資料庫，而不只是文字快捷鍵。 你可以保存攝影速查表、剪輯快捷鍵或 V60
+  沖煮比例，讓它成為隨時可以查看、而不一定要貼上的內容。
+</p>
+<p>然後，再讓內容變成動態的。</p>
+<p>
+  <strong>Dynamic placeholders。</strong>這些 token 可以放在 Snippet 或
+  Quicklink 中，展開時會被即時資料取代。
+</p>
+<p>
+  <code>{date offset="+7d"}</code> 會寫入一週後的日期；<code>{clipboard}</code>
+  會插入最後複製的內容；<code>{cursor}</code> 會在展開後把游標放到指定位置；新的
+  <code>{calculator}</code> placeholder 則可以直接在文字中進行計算。
+</p>
+<p>
+  因此，一段回覆 Snippet 可以寫成「團隊成員會在
+  <code>{date offset="+7d"}</code
+  >前回覆你」，並在每次使用時自動填入正確日期。只要設定一次，之後就會一直保持正確。
+</p>
+<img
+  src="/newsletters/raycast-3-percent/multiple-email-quicklink.jpg"
+  alt="Raycast 中可一次開啟多個 email 連結的 Quicklink 設定畫面"
+/>
+
+<h2>Clipboard History 是記憶，而不是暫存區</h2>
+<p>
+  多數人把 Clipboard History
+  當成一次只進出一筆資料的工具。停止這種用法後，它會變成 Raycast
+  最強大的功能之一，也可能是 Pedro 最常使用的 command。
+</p>
+<p>
+  所有複製過的內容都會被保留，而且可以搜尋。因此觀念上的轉變很簡單：只要是值得記住的東西就直接複製，
+  不論是文章中的一句話、追蹤碼、地址或圖片。你不必當下決定是否要儲存，只要相信需要時能再搜尋回來。
+  Pedro 把它視為自己的第二大腦。
+</p>
+<p>以下兩種組合能讓它真正發揮作用。</p>
+<p>
+  發現自己一直重複複製同一段內容嗎？在 Clipboard History 選取它，按下
+  <code>⌘ + K</code>，再選擇
+  <code>Save as Snippet</code>。剪貼簿其實正在告訴你， 哪些內容應該變成
+  Snippet。
+</p>
+<p>
+  另一個功能是
+  <strong>Paste Sequentially</strong
+  >。先複製多筆內容，再於表單的不同欄位中依序貼上；有需要的話，也可以在每一筆之間加入換行。
+</p>
+<p>
+  Clipboard History
+  也會保留每筆內容的原始格式，因此貼上結果能和來源一致。剪貼簿不再只是臨時收容資料的地方，
+  而是可以立即採取行動的短期記憶。
+</p>
+<p>免費方案最多可以保留三個月的紀錄，Pro 訂閱者則可以永久保留。</p>
+<img
+  src="/newsletters/raycast-3-percent/ocr.jpg"
+  alt="Raycast Clipboard History 透過 OCR 搜尋複製圖片內文字的畫面"
+/>
+
+<h2>藏在眼前的 Commands</h2>
+<p>這些功能全部內建、免費，但多數人從未發現。</p>
+<p>
+  <strong>Window Management。</strong>不必安裝第三方
+  app，就能用鍵盤調整大小、排列與移動視窗。關鍵是使用一致的基礎按鍵。Pedro 使用
+  <code>⌘ + ⌃ + ⌥</code>，再搭配左右方向鍵切成半螢幕、<code>1–4</code>
+  放到四個角落、<code>C</code> 置中、<code>F</code>
+  最大化。大約一天就能建立肌肉記憶。
+</p>
+<p>
+  <strong>Search Menu Items。</strong>搜尋目前 app 的所有選單項目。在 Final Cut
+  或 DaVinci Resolve 這類功能藏在四層選單深處的 app 中尤其實用。它也能用來學習
+  app：例如在瀏覽器搜尋 <code>copy URL</code>，可能就會發現下方還有
+  <code>copy URL as markdown</code>。你因此多認識了一個每天都在使用的 app。
+</p>
+<p>
+  <strong>Search Screenshots。</strong
+  >指定截圖資料夾後，就能按照圖片中的文字搜尋。想找出包含「magic at your
+  fingertips」的截圖，只要搜尋這句文字即可。這也適用於剪貼簿中的圖片，並能直接取出辨識到的文字。
+</p>
+<p>
+  <strong>Calculator。</strong>它不只是一台計算機。你可以輸入
+  <code>15% tip on 42</code>、<code>5 feet 3 inches in cm</code>、<code
+    >time diff Tokyo</code
+  >
+  或 <code>days until 1 Aug</code>。比較少人知道的是，開啟 Calculator History
+  並釘選一個結果後，它會持續更新。例如釘選距離旅行還有幾天，每次查看時都會顯示最新倒數。
+</p>
+<p>
+  <strong>System Commands。</strong>清空垃圾桶、鎖定螢幕、切換 dark
+  mode、讓顯示器休眠，或關閉目前 app 以外的所有 app。原本要深入選單或 System
+  Settings 才能完成的事，現在搜尋一次即可。替常用項目設定 alias，例如用
+  <code>et</code>
+  清空垃圾桶，之後就不必再為此打開 Finder。
+</p>
+<p>
+  <strong>Focus。</strong>封鎖會讓你分心的 app
+  與網站，啟動工作階段後專心處理事情。文章發布時它仍只有 v1 支援，尚未進入
+  v2；但如果你常因為不小心開啟一個分頁而浪費二十分鐘，仍值得暫時回到舊版使用。
+</p>
+<img
+  src="/newsletters/raycast-3-percent/search-screenshots.jpg"
+  alt="Raycast Search Screenshots 依照圖片內文字顯示截圖搜尋結果"
+/>
+
+<h2>再往前一步</h2>
+<p>
+  目前為止介紹的都是內建功能；進入 Store 後，Raycast 就不再只是一個
+  app，而會開始和其他 app 連接。
+</p>
+<p>
+  <strong>Extensions。</strong>這些是從 Store 安裝、由社群開發的
+  commands，數量有數千個，可能是一個搜尋捷徑、小工具，
+  或與既有服務深度整合的功能。
+</p>
+<p>
+  Linear、GitHub、Spotify、Vercel、1Password：issue、deployment
+  與音樂都能直接操作。你不必為了一件小事分別開啟每個 app，只要從 Root Search
+  完成，然後繼續工作。
+</p>
+<p>
+  重點不是有數千個
+  extensions，而是它們的行為和已經設定好的其他功能完全一致。Extension command
+  也能使用 alias、hotkey 與 argument，就像內建 command 一樣。因此把 Linear
+  extension、hotkey 與「使用選取文字作為
+  argument」組合起來，只是把前面相同的技巧指向另一項工具。
+  不需要學習新方法；同一套連接方式，可以延伸到更多地方。
+</p>
+<p>
+  Extensions 也能提供工具給 AI。在 Chat 中輸入 <code>@</code>，已安裝的
+  extension 就會以工具顯示，例如 <code>@linear</code>、<code>@github</code> 與
+  <code>@spotify</code>，AI 會判斷應該呼叫哪一項。原本只是用來節省幾次點擊的
+  extension， 也因此成為 AI 能夠操作的工具。
+</p>
+<p>
+  而且它們全部都是 open source。當某個 extension
+  幾乎符合需求、但還差一點時，找到其中一個 command，按下
+  <code>⌘ + K</code>，再選擇
+  <code>Fork Extension</code>，就能取得可以在本地執行與修改的副本。 修正
+  bug、加入需要的功能，再把改動貢獻回去，所有人都能受益。一般 Mac app
+  很難做到這一點。
+</p>
+<img
+  src="/newsletters/raycast-3-percent/store-command.jpg"
+  alt="Raycast Store command 顯示可安裝的 Extensions"
+/>
+
+<h2>接下來是 AI</h2>
+<p>
+  Pedro 刻意把 AI 留到最後。不是因為它不重要，而是因為完成前面的設定後，AI
+  才能發揮最大的效果。
+</p>
+<p>
+  Raycast AI 不是硬接在旁邊的一個聊天機器人，而是能深入既有設定的另一層能力。
+</p>
+<p>
+  <strong>AI Chat。</strong
+  >它是一段真正的對話，可以跨日保留歷史、附件與工具，而不是每次使用都重新開始的輸入框。
+</p>
+<p>
+  它現在更像工作空間，而不是一次性的問答。你可以從任何訊息建立
+  branch，嘗試不同方向又不會失去原本脈絡 （<code>⌘ + ⇧ + B</code
+  >）；也能把對話放進資料夾，讓經常回來使用的 writing chat 或 project chat
+  保持在容易找到的位置。開啟 Memory
+  後，它會保留長期有效的資訊，例如你是誰、正在做什麼，
+  以及偏好的回答方式。你只需要正常使用，就能逐步完成設定。
+</p>
+<p>
+  AI Chat 可以用自然語言對這些內容採取行動。附加檔案、Note、Clipboard History
+  項目或截圖，再直接提出問題。這依然是相同的元件與連接方式，只是多了一層把它們組合起來的能力。
+  輸入 <code>@</code> 後，還能使用 <code>@calendar</code>、<code>@linear</code>
+  與 <code>@github</code> 等工具。
+</p>
+<img
+  src="/newsletters/raycast-3-percent/google-cal-extension.jpg"
+  alt="Raycast AI 使用 Google Calendar Extension 建立活動"
+/>
+<p>
+  <strong>Skills。</strong>這是只要寫一次就能重複使用的
+  context，包含你的慣例、知識與偏好的做事方式。相關情境出現時， Raycast
+  會自動載入。
+</p>
+<p>
+  在資料夾中放入一個
+  <code>SKILL.md</code>，之後就不必在每次對話重複說明自己。Extension 提供 AI
+  可以使用的工具；Skill 則提供 context，讓 AI
+  按照你會採用的方式使用該工具。兩者是一組：
+  一個負責完成事情，一個負責把事情做對。
+</p>
+<p>
+  <strong>Dictation。</strong>直接說話，Raycast
+  就會把內容整理成乾淨、有格式的文字，移除贅詞、補好標點，並貼進目前使用的 app。
+</p>
+<p>
+  按下 hotkey（Pedro 使用
+  <code>✦ + Space</code>）、開始說話，再按一次即可。很多想法說出口很容易，
+  打字卻很麻煩，這時只要先說出粗略版本就足夠。Dictation
+  也知道文字會被放到哪裡：在 Mail 中會整理成 email，在 Slack
+  中會變成簡短訊息。同一句話，會依照所在空間調整形式。
+</p>
+<img
+  src="/newsletters/raycast-3-percent/dictation.jpg"
+  alt="Raycast Dictation 把語音轉換成整理過的格式化文字"
+/>
+
+<h2>這些功能最後會帶來什麼</h2>
+<p>
+  可以先做一個測試：找出一件每天會用滑鼠做五次的事。可能是開啟某個資料夾、執行搜尋、
+  重複輸入一段訊息，或把視窗拖到固定位置。
+</p>
+<p>
+  接著把它串起來：設定 hotkey、建立 Snippet、替 Quicklink 加上 hotkey、在
+  Snippet 中加入 placeholder，或把 Clipboard History 項目變成
+  template。用三十秒完成一次設定， 換掉未來一整年反覆使用緩慢方式的時間。
+</p>
+<p>
+  完成十個這樣的改造後，Raycast 就不再只是用來啟動 app
+  的工具，而會成為你使用電腦的方式。
+</p>
+<p>
+  你可以從 <a href="https://raycast.com/new">raycast.com/new</a> 下載新版
+  Raycast。
+</p>

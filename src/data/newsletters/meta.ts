@@ -2,7 +2,7 @@ export interface NewsletterMeta {
   id: string;
   title: string;
   date: string;
-  type: "monthly" | "weekly";
+  type: "monthly" | "weekly" | "article";
   theme: "crimson" | "indigo" | "emerald" | "violet" | "amber";
   kicker: string;
   summary: string;
@@ -11,6 +11,17 @@ export interface NewsletterMeta {
 }
 
 export const newsletterMeta: NewsletterMeta[] = [
+  {
+    id: "article-2026-raycast-3-percent",
+    title: "你可能只用了 Raycast 的 3%：把功能串成自己的工作流",
+    date: "2026-05-29",
+    type: "article",
+    theme: "crimson",
+    kicker: "Pedro Duarte · Writing",
+    summary:
+      "Pedro Duarte 分享如何串連 hotkeys、Quicklinks、Snippets、剪貼簿、內建指令、Extensions 與 AI，讓 Raycast 從啟動器變成日常工作流中樞。",
+    author: "Pedro Duarte",
+  },
   {
     id: "monthly-2026-02",
     title: "Raycast 二月月報：Introducing Glaze、新版 Raycast 時程與更多更新",
@@ -161,4 +172,10 @@ export function parseAuthor(author: string): {
   const parts = author.split("|").map((s) => s.trim());
   if (parts.length === 2) return { name: parts[0], publisher: parts[1] };
   return { name: author };
+}
+
+export function contentTypeLabel(type: NewsletterMeta["type"]): string {
+  if (type === "monthly") return "月報";
+  if (type === "weekly") return "週報";
+  return "精選文章";
 }

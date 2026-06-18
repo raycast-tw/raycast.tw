@@ -6,7 +6,7 @@ import { SITE_URL } from "../../utils/siteUrl";
 const internalLinks = {
   title: "本站導覽",
   links: [
-    { label: "電子報總覽", href: "/newsletter", internal: true },
+    { label: "內容總覽", href: "/newsletter", internal: true },
     { label: "活動總覽", href: "/events", internal: true },
     {
       label: "RSS Feed",

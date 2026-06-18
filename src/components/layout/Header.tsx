@@ -20,7 +20,7 @@ const navLinks = [
     desktopOnly: false,
   },
   {
-    label: "電子報",
+    label: "精選內容",
     href: "/#newsletter",
     id: "newsletter",
     desktopOnly: false,
@@ -30,7 +30,7 @@ const navLinks = [
 
 const archiveLinks = [
   { label: "活動總覽", href: "/events" },
-  { label: "電子報總覽", href: "/newsletter" },
+  { label: "內容總覽", href: "/newsletter" },
 ];
 
 export function Header() {

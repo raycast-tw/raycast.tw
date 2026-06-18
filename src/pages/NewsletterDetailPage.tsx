@@ -2,14 +2,18 @@ import { useEffect, useRef } from "react";
 import { useParams, Link } from "react-router";
 import { ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
-import { newsletters, parseAuthor } from "../data/newsletters/index";
+import {
+  newsletters,
+  parseAuthor,
+  contentTypeLabel,
+} from "../data/newsletters/index";
 import { useSeo } from "../utils/useSeo";
 import { SITE_URL } from "../utils/siteUrl";
 
 export function NewsletterDetailPage() {
   const { id } = useParams<{ id: string }>();
   const newsletter = newsletters.find((n) => n.id === id);
-  const typeLabel = newsletter?.type === "monthly" ? "月報" : "週報";
+  const typeLabel = newsletter ? contentTypeLabel(newsletter.type) : "";
   const progressBarRef = useRef<HTMLDivElement>(null);
 
   useSeo(
@@ -63,7 +67,7 @@ export function NewsletterDetailPage() {
               {
                 "@type": "ListItem",
                 position: 2,
-                name: "電子報",
+                name: "中文內容",
                 item: `${SITE_URL}/newsletter`,
               },
               {
@@ -135,7 +139,7 @@ export function NewsletterDetailPage() {
           to="/newsletter"
           className="text-foreground inline-flex items-center justify-center rounded-full px-6 py-2.5 text-[16px] font-semibold tracking-[0.3px] shadow-[rgba(255,255,255,0.1)_0px_1px_0px_0px_inset] transition-opacity hover:opacity-60"
         >
-          ← 返回電子報
+          ← 返回內容總覽
         </Link>
       </motion.div>
     );
@@ -174,7 +178,7 @@ export function NewsletterDetailPage() {
               className="text-subtle mb-6 inline-flex items-center gap-1 rounded-full text-[14px] font-semibold transition hover:text-white"
             >
               <ArrowLeft className="size-4" />
-              返回電子報
+              返回內容總覽
             </Link>
           </motion.div>
 

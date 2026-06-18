@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import type { Newsletter } from "../../data/newsletters/index";
+import { contentTypeLabel } from "../../data/newsletters/meta";
 import { cn } from "../../utils/cn";
 
 interface NewsletterCardProps {
@@ -23,7 +24,7 @@ const themeClasses: Record<NonNullable<Newsletter["theme"]>, string> = {
 };
 
 export function NewsletterCard({ newsletter, index = 0 }: NewsletterCardProps) {
-  const typeLabel = newsletter.type === "monthly" ? "月報" : "週報";
+  const typeLabel = contentTypeLabel(newsletter.type);
   const themeClass = themeClasses[newsletter.theme];
 
   return (

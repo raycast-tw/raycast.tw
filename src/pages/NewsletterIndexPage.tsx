@@ -7,12 +7,13 @@ import { SectionTag } from "../components/ui/SectionTag";
 import { useSeo } from "../utils/useSeo";
 import { SITE_URL } from "../utils/siteUrl";
 
-type FilterMode = "all" | "monthly" | "weekly";
+type FilterMode = "all" | "monthly" | "weekly" | "article";
 
 const filterOptions: Array<{ id: FilterMode; label: string }> = [
   { id: "all", label: "全部" },
   { id: "monthly", label: "月報" },
   { id: "weekly", label: "週報" },
+  { id: "article", label: "精選文章" },
 ];
 
 export function NewsletterIndexPage() {
@@ -33,17 +34,18 @@ export function NewsletterIndexPage() {
   );
 
   useSeo({
-    title: "電子報總覽：Raycast 月報與週報",
+    title: "Raycast 中文內容總覽：月報、週報與精選文章",
     description:
-      "Raycast Community Taiwan 整理的官方月報與週報，快速掌握 Raycast 平台動態、社群活動與實用技巧。",
+      "Raycast Community Taiwan 整理的官方月報、週報與精選文章，快速掌握平台動態、社群活動與實用技巧。",
     path: "/newsletter",
     image: "/og/newsletter/index.png",
     jsonLd: [
       {
         "@context": "https://schema.org",
         "@type": "CollectionPage",
-        name: "Raycast 電子報總覽",
-        description: "Raycast Community Taiwan 整理的官方月報與週報。",
+        name: "Raycast 中文內容總覽",
+        description:
+          "Raycast Community Taiwan 整理的官方月報、週報與精選文章。",
         url: `${SITE_URL}/newsletter`,
         inLanguage: "zh-TW",
         isPartOf: {
@@ -97,12 +99,12 @@ export function NewsletterIndexPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
           >
-            <SectionTag>NEWSLETTER</SectionTag>
+            <SectionTag>RAYCAST DIGEST</SectionTag>
             <h1 className="text-foreground mt-3 text-[clamp(34px,5vw,56px)] leading-[1.08] font-medium tracking-[-0.02em]">
-              電子報總覽
+              中文內容總覽
             </h1>
             <p className="text-light-gray mt-5 max-w-[620px] text-[16px] leading-[1.7] font-medium tracking-[0.2px] md:text-[20px]">
-              Raycast 月報與週報合集，掌握平台動態、社群活動與實用技巧。
+              Raycast 月報、週報與精選文章，掌握平台動態、社群活動與實用技巧。
             </p>
           </motion.div>
 
@@ -129,7 +131,7 @@ export function NewsletterIndexPage() {
             ))}
           </motion.div>
 
-          <h2 className="sr-only">電子報列表</h2>
+          <h2 className="sr-only">內容列表</h2>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {visibleNewsletters.map((newsletter, index) => (
               <NewsletterCard

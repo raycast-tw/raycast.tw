@@ -6,12 +6,13 @@ import { NewsletterCard } from "../ui/NewsletterCard";
 import { newsletters } from "../../data/newsletters/index";
 import { carouselClasses, useCarousel } from "../../utils/useCarousel";
 
-type FilterMode = "all" | "monthly" | "weekly";
+type FilterMode = "all" | "monthly" | "weekly" | "article";
 
 const filterOptions: Array<{ id: FilterMode; label: string }> = [
   { id: "all", label: "全部" },
   { id: "monthly", label: "月報" },
   { id: "weekly", label: "週報" },
+  { id: "article", label: "精選文章" },
 ];
 
 export function NewsletterSection() {
@@ -26,11 +27,7 @@ export function NewsletterSection() {
   );
   const visibleNewsletters = useMemo(
     () =>
-      filter === "monthly"
-        ? sorted.filter((item) => item.type === "monthly")
-        : filter === "weekly"
-          ? sorted.filter((item) => item.type === "weekly")
-          : sorted,
+      filter === "all" ? sorted : sorted.filter((item) => item.type === filter),
     [filter, sorted],
   );
 
@@ -47,16 +44,16 @@ export function NewsletterSection() {
       <div className="container">
         <div className="flex flex-col gap-9 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-[620px]">
-            <SectionTag>NEWSLETTER</SectionTag>
-            <h2 className="text-foreground mt-3 max-w-[11ch]">精選電子報</h2>
+            <SectionTag>RAYCAST DIGEST</SectionTag>
+            <h2 className="text-foreground mt-3 max-w-[11ch]">精選內容</h2>
             <p className="text-light-gray mt-5 max-w-[560px] text-[16px] leading-[1.7] font-medium tracking-[0.2px] md:text-[20px]">
-              精選月報與週報，快速掌握社群動態與實用技巧。
+              精選月報、週報與文章，快速掌握社群動態與實用技巧。
             </p>
             <Link
               to="/newsletter"
               className="mt-5 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/3 px-4 py-1.5 text-[13px] font-semibold text-white/70 transition hover:border-white/20 hover:bg-white/8 hover:text-white"
             >
-              查看全部電子報
+              查看全部內容
               <ArrowUpRight className="size-3.5" />
             </Link>
           </div>

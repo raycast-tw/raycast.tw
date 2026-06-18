@@ -123,7 +123,12 @@ async function generateOgImages(fonts: FontEntry[], logoDataUri: string) {
 
   // Newsletter detail OG images
   for (const n of newsletterMeta) {
-    const typeLabel = n.type === "monthly" ? "MONTHLY" : "WEEKLY";
+    const typeLabel =
+      n.type === "monthly"
+        ? "MONTHLY"
+        : n.type === "weekly"
+          ? "WEEKLY"
+          : "FEATURED ARTICLE";
     await renderOg(
       fonts,
       {
@@ -143,9 +148,9 @@ async function generateOgImages(fonts: FontEntry[], logoDataUri: string) {
     fonts,
     {
       kicker: "",
-      badge: "NEWSLETTER",
-      title: "電子報總覽：Raycast 月報與週報",
-      meta: `${newsletterMeta.length} 期 · 中文整理`,
+      badge: "RAYCAST DIGEST",
+      title: "Raycast 中文內容總覽：月報、週報與精選文章",
+      meta: `${newsletterMeta.length} 篇 · 中文整理`,
       theme: "crimson",
       logoDataUri,
     },
@@ -238,17 +243,18 @@ function buildRoutes(): RouteSeo[] {
   );
   routes.push({
     path: "/newsletter",
-    title: "電子報總覽：Raycast 月報與週報",
+    title: "Raycast 中文內容總覽：月報、週報與精選文章",
     description:
-      "Raycast Community Taiwan 整理的官方月報與週報，快速掌握 Raycast 平台動態、社群活動與實用技巧。",
+      "Raycast Community Taiwan 整理的官方月報、週報與精選文章，快速掌握 Raycast 平台動態、社群活動與實用技巧。",
     image: `${SITE_URL}/og/newsletter/index.png`,
     type: "website",
     jsonLd: [
       {
         "@context": "https://schema.org",
         "@type": "CollectionPage",
-        name: "Raycast 電子報總覽",
-        description: "Raycast Community Taiwan 整理的官方月報與週報。",
+        name: "Raycast 中文內容總覽",
+        description:
+          "Raycast Community Taiwan 整理的官方月報、週報與精選文章。",
         url: `${SITE_URL}/newsletter`,
         inLanguage: "zh-TW",
         isPartOf: {
@@ -266,7 +272,7 @@ function buildRoutes(): RouteSeo[] {
       },
       breadcrumb([
         { name: "首頁", url: `${SITE_URL}/` },
-        { name: "電子報", url: `${SITE_URL}/newsletter` },
+        { name: "中文內容", url: `${SITE_URL}/newsletter` },
       ]),
     ],
     lastMod: latestNewsletterDate(),
@@ -312,7 +318,7 @@ function buildRoutes(): RouteSeo[] {
         },
         breadcrumb([
           { name: "首頁", url: `${SITE_URL}/` },
-          { name: "電子報", url: `${SITE_URL}/newsletter` },
+          { name: "中文內容", url: `${SITE_URL}/newsletter` },
           { name: n.title, url },
         ]),
       ],
