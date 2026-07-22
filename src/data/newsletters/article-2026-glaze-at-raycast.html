@@ -1,0 +1,138 @@
+<img
+  src="/newsletters/glaze-at-raycast/blog-cover.png"
+  alt="Raycast 與 Glaze 的 App 圖示，置於深色抽象背景上"
+/>
+<p>
+  我們並不是憑空打造出 Glaze。早在向所有人開放之前，Raycast
+  團隊就已經每天使用它。如今，Raycast 內部有數十個 Glaze app
+  持續運作；打造它們的人包括工程師、設計師、客服團隊，以及從未寫過一行程式碼的同事。
+</p>
+<p>
+  這篇文章會快速介紹我們使用的一些內部 app，以及為什麼我們還在繼續打造更多。
+</p>
+<p>
+  本文翻譯自 Thomas Paul Mann 發表於 Glaze Blog 的
+  <a href="https://www.glaze.app/blog/how-we-use-glaze-at-raycast"
+    >〈How we use Glaze at Raycast〉</a
+  >。
+</p>
+
+<h2>為什麼我們選擇自己打造工具</h2>
+<p>
+  每個團隊最後都會遇到同一個問題：市面上的工具是為「一般公司」設計的。你不是得扭曲自己的工作流程去配合工具，就是得把五個瀏覽器分頁和一份試算表勉強拼在一起。
+</p>
+<p>
+  Glaze
+  提供了第三種選擇。當工作流程的某個環節不夠順暢時，只要有人描述心目中理想的
+  app，幾分鐘後它就能真正出現，並連接到我們已經在用的 GitHub、Sentry、Notion
+  與自家資料庫。最重要的是，它完全按照我們的實際工作方式打造，不是一般公司的做法，而是我們自己的做法。
+</p>
+<p>
+  最後這點很重要。這些 app
+  不會取代現有的工具組合，而是架在它們之上；資料仍留在原來的位置，Glaze
+  只是提供更好的檢視與操作介面。老實說，讓每天的工作快一點點，往往正是團隊最能累積優勢的地方。
+</p>
+
+<h2>驅動 Raycast 運作的 App</h2>
+<p>
+  有些 app
+  對整間公司都很實用。例如一眼呈現關鍵指標的儀表板，讓任何人不必鑽進分析工具就能掌握現況；還有一些小工具，專門回答團隊每週反覆出現的問題。它們常駐在
+  Dock，只要點一下就能開啟，也在不知不覺間取代了一大批瀏覽器書籤。
+</p>
+
+<h3>產品與工程</h3>
+<p>工程團隊最積極使用 Glaze，這大概不令人意外。其中有三個 app 特別值得一提：</p>
+<p>
+  <strong>Mini Linear。</strong>這是我們為協調 Glaze 公開 beta
+  上線而打造的小型精緻追蹤工具。所有參與 Glaze
+  的同事都在裡面，拖曳一次就能完成任務分類。大家共用同一個上線進度視圖，不會漏掉任何事情，也不必再問還有哪些工作尚未完成。
+</p>
+<img
+  src="/newsletters/glaze-at-raycast/mini-linear.png"
+  alt="用於追蹤 Glaze 公開 beta 上線進度的 Mini Linear App"
+/>
+<p>
+  <strong>RayDB。</strong>Raycast
+  將資料儲存在本機加密資料庫中，而我們採用的自訂加密方式，是大多數資料庫 app
+  無法直接開啟的。RayDB
+  會自動處理解密，並針對工程師真正關心的內容設計檢視介面：將同步觸發狀態放在最顯眼的位置、快速切換不同版本的
+  Raycast，以及執行偶爾需要的維護操作。工程師開發功能時，可以直接檢查自己電腦上的真實資料，不必靠猜測判斷。
+</p>
+<img
+  src="/newsletters/glaze-at-raycast/raydb.png"
+  alt="自動處理 Raycast 本機資料庫加密的 RayDB 檢視工具"
+/>
+<p>
+  <strong>Quality。</strong>它會連接 Sentry，將 Raycast Mac 與 Windows app
+  的健康狀態濃縮在同一個畫面：目前表現如何，以及接下來該優先處理哪些問題。檢查
+  crash 從一件苦差事變成一眼就能完成，因此問題可以更早被發現與修正。
+</p>
+<img
+  src="/newsletters/glaze-at-raycast/quality.png"
+  alt="彙整 Raycast Mac 與 Windows App 健康狀態的 Quality 儀表板"
+/>
+<p>
+  這些工具都無法直接從市面上買到，而這正是重點。它們依照 Raycast
+  的內部運作方式打造，也讓每天的工作更專注一些。
+</p>
+
+<h3>客服支援</h3>
+<p>
+  客服團隊打造了一個連接 GitHub 的 Glaze app，用來處理完整的 extension review
+  流程。所有送進 Raycast Store 的新 extension
+  與更新都會經過這裡，包括待審佇列、各項檢查，以及與作者來回溝通。過去散落在多個
+  GitHub 分頁裡的資訊，現在都集中在一個專注的 app 中。
+</p>
+<img
+  src="/newsletters/glaze-at-raycast/extension-review.png"
+  alt="整合 GitHub 並管理 Raycast Store Extension Review 流程的內部 App"
+/>
+<p>
+  這是我最喜歡的例子，因為它展現了讓實際執行工作的人親手打造工具，會帶來什麼結果。沒有人先寫規格文件；團隊只是不斷調整這個
+  app，直到它真正符合審查 extension 的工作方式。現在審查速度更快，extension
+  作者也能更早收到回覆。
+</p>
+
+<h3>業務</h3>
+<p>我們也打造了自己的 CRM。這聽起來很瘋狂，但先聽我說完。</p>
+<img
+  src="/newsletters/glaze-at-raycast/crm.png"
+  alt="以 Notion 資料為基礎打造的 Raycast 內部 CRM"
+/>
+<p>
+  大型 CRM 有九成功能是我們不需要的。我們的 CRM 建立在 Notion
+  之上，所以資料仍留在原本的位置；Glaze
+  只是提供更合適的操作方式。每位潛在客戶都會連結到 Front 裡的往來
+  email，以及與對方共用的 Slack
+  channel，讓完整脈絡集中在同一處。通話前，沒有人需要翻遍 inbox
+  才能確認對話進度；所有人都看得見 pipeline，也能準時 follow
+  up。我們只打造真正需要的部分，其餘一概省略。
+</p>
+
+<h2>我們如何與這些 App 協作</h2>
+<p>一路走來，我們學到幾件事：</p>
+<ul>
+  <li>
+    <strong>任何人都能動手打造。</strong>最好的 app
+    來自最接近問題的人，而不是由工程師代替他們開發。
+  </li>
+  <li>
+    <strong>從小處開始，持續迭代。</strong>這些 app
+    大多從一個解決單一困擾的畫面起步；它們之所以能逐漸成長，是因為每次迭代只需要幾分鐘，而不是一整個
+    sprint。
+  </li>
+  <li>
+    <strong>連接，而不是取代。</strong>每個 app
+    都串接我們已付費且信任的既有工具，Glaze
+    則是讓這些工具真正像是為我們量身打造的那一層。
+  </li>
+</ul>
+<p>
+  未來的文章會更深入介紹各個 app。現階段的結論很簡單：驅動 Raycast
+  運作的軟體，有愈來愈多是我們親手打造的；通常一個下午就能完成，而且完全貼合我們的工作方式。
+</p>
+<p>
+  如果你也想為自己的團隊這麼做，<a href="https://glaze.app/"
+    >Glaze 已向所有人開放</a
+  >，可以免費開始使用。讓我們看看你會做出什麼。💠
+</p>

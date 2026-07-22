@@ -12,6 +12,17 @@ export interface NewsletterMeta {
 
 export const newsletterMeta: NewsletterMeta[] = [
   {
+    id: "article-2026-glaze-at-raycast",
+    title: "Raycast 如何運用 Glaze：一窺驅動團隊日常的內部 App",
+    date: "2026-07-08",
+    type: "article",
+    theme: "amber",
+    kicker: "Thomas Paul Mann · Glaze Blog",
+    summary:
+      "Thomas Paul Mann 分享 Raycast 團隊如何用 Glaze 打造 Mini Linear、RayDB、品質儀表板、Extension Review 與 CRM 等內部工具。",
+    author: "Thomas Paul Mann",
+  },
+  {
     id: "article-2026-raycast-3-percent",
     title: "你可能只用了 Raycast 的 3%：把功能串成自己的工作流",
     date: "2026-05-29",
