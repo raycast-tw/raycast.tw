@@ -12,6 +12,17 @@ export interface NewsletterMeta {
 
 export const newsletterMeta: NewsletterMeta[] = [
   {
+    id: "article-2026-getting-productive-with-raycast",
+    title: "用 Raycast 提升生產力：從第一組快捷鍵打造自己的工作流",
+    date: "2026-07-28",
+    type: "article",
+    theme: "indigo",
+    kicker: "Thomas Paul Mann · X",
+    summary:
+      "Thomas Paul Mann 帶你從快捷鍵與搜尋開始，逐步運用 Clipboard History、Extensions、Quicklinks、AI、Dictation、視窗管理與 Cloud Sync 建立自己的 Raycast 工作流。",
+    author: "Thomas Paul Mann",
+  },
+  {
     id: "article-2026-glaze-at-raycast",
     title: "Raycast 如何運用 Glaze：一窺驅動團隊日常的內部 App",
     date: "2026-07-08",
