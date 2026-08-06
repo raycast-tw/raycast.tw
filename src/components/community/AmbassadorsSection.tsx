@@ -12,7 +12,7 @@ export function AmbassadorsSection() {
         <SectionTag>AMBASSADORS</SectionTag>
         <h2 className="text-foreground mt-3">Raycast Taiwan 大使</h2>
 
-        <div className="mt-14 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
           {ambassadors.map((ambassador, index) => (
             <AmbassadorCard
               key={ambassador.id}

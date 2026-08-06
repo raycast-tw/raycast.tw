@@ -1,6 +1,8 @@
 import ycAvatar from "../assets/ambassadors/yc.jpg";
 import cashAvatar from "../assets/ambassadors/cash.jpg";
 import weihoAvatar from "../assets/ambassadors/1weiho.jpg";
+import rayAvatar from "../assets/ambassadors/tsaicy0409.jpg";
+import yacolateAvatar from "../assets/ambassadors/yacolate0.jpg";
 
 export interface Ambassador {
   id: string;
@@ -48,5 +50,19 @@ export const ambassadors: Ambassador[] = [
     avatar: null,
     threads: "https://www.threads.com/@yukaii_h",
     twitter: "https://x.com/yukaii_h",
+  },
+  {
+    id: "tsaicy0409",
+    name: "Ray ᯅ",
+    role: "Ambassador",
+    avatar: rayAvatar,
+    twitter: "https://x.com/tsaicy0409",
+  },
+  {
+    id: "yacolate0",
+    name: "Yacolate",
+    role: "Ambassador",
+    avatar: yacolateAvatar,
+    twitter: "https://x.com/Yacolate0",
   },
 ];
