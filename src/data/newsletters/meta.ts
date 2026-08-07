@@ -12,6 +12,17 @@ export interface NewsletterMeta {
 
 export const newsletterMeta: NewsletterMeta[] = [
   {
+    id: "monthly-2026-07",
+    title: "Raycast 七月月報：Screen Awareness、Cloud Sync 與更多更新",
+    date: "2026-08-05",
+    type: "monthly",
+    theme: "emerald",
+    kicker: "Raycast July Update",
+    summary:
+      "Pedro 帶來七月更新，涵蓋 Screen Awareness、AI Chat 通知與訊息編輯、跨平台 Cloud Sync、iOS 多選與 Glaze Awards。",
+    author: "Raycast Team",
+  },
+  {
     id: "article-2026-getting-productive-with-raycast",
     title: "用 Raycast 提升生產力：從第一組快捷鍵打造自己的工作流",
     date: "2026-07-28",
