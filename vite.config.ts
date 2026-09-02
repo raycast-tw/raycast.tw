@@ -13,6 +13,11 @@ export default defineConfig({
         rewrite: () =>
           "/calendar/get-items?calendar_api_id=cal-KwZeQ0HC9LFQ3Fk",
       },
+      "/api/raycast-videos": {
+        target: "https://www.youtube.com",
+        changeOrigin: true,
+        rewrite: () => "/feeds/videos.xml?channel_id=UCPvOHaaP9E6FqSqG1NMV_Hw",
+      },
     },
   },
 });

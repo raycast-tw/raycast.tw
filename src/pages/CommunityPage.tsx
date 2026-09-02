@@ -3,6 +3,7 @@ import { HeroSection } from "../components/community/HeroSection";
 import { EventsSection } from "../components/community/EventsSection";
 import { AmbassadorsSection } from "../components/community/AmbassadorsSection";
 import { NewsletterSection } from "../components/community/NewsletterSection";
+import { VideosSection } from "../components/community/VideosSection";
 import { useSeo } from "../utils/useSeo";
 import { SITE_URL } from "../utils/siteUrl";
 
@@ -62,6 +63,7 @@ export function CommunityPage() {
         <Suspense fallback={null}>
           <GlobalEventsSection />
         </Suspense>
+        <VideosSection />
         <NewsletterSection />
         <Suspense fallback={null}>
           <MazeSection />

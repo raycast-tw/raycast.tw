@@ -1,10 +1,25 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/api/raycast-videos",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, s-maxage=300, stale-while-revalidate=3600"
+        }
+      ]
+    }
+  ],
   "rewrites": [
     {
       "source": "/api/luma-events",
       "destination": "https://api2.luma.com/calendar/get-items?calendar_api_id=cal-KwZeQ0HC9LFQ3Fk"
+    },
+    {
+      "source": "/api/raycast-videos",
+      "destination": "https://www.youtube.com/feeds/videos.xml?channel_id=UCPvOHaaP9E6FqSqG1NMV_Hw"
     }
   ]
 }

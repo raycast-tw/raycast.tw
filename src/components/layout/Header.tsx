@@ -20,6 +20,12 @@ const navLinks = [
     desktopOnly: false,
   },
   {
+    label: "最新影片",
+    href: "/#videos",
+    id: "videos",
+    desktopOnly: false,
+  },
+  {
     label: "精選內容",
     href: "/#newsletter",
     id: "newsletter",
@@ -100,18 +106,24 @@ export function Header() {
                 alt="Raycast"
                 className="size-7 rounded-[8px] object-cover shadow-[0_14px_34px_-10px_rgba(255,89,117,0.8)]"
               />
-              <span className="text-foreground text-[15px] font-semibold tracking-[0.1px]">
+              <span
+                className={`text-foreground text-[15px] font-semibold tracking-[0.1px] ${
+                  isHomePage ? "lg:hidden xl:inline" : ""
+                }`}
+              >
                 Raycast Community Taiwan
               </span>
             </Link>
 
             {isHomePage ? (
-              <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 md:flex">
+              <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 lg:flex">
                 {navLinks.map((link) => (
                   <a
                     key={link.href}
                     href={link.href}
                     className={`group relative text-[16px] font-medium tracking-[0.3px] transition-colors hover:text-white ${
+                      link.desktopOnly ? "hidden xl:block" : ""
+                    } ${
                       activeSection === link.id
                         ? "is-active text-white"
                         : "text-white/58"
@@ -159,7 +171,9 @@ export function Header() {
                 href="https://www.threads.com/@raycast_taiwan"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden items-center gap-2 rounded-full border border-white/12 bg-white/6 px-4 py-2 text-[14px] font-medium tracking-[0.2px] text-white/88 transition hover:border-white/24 hover:bg-white/10 hover:text-white md:inline-flex"
+                className={`items-center gap-2 rounded-full border border-white/12 bg-white/6 px-4 py-2 text-[14px] font-medium tracking-[0.2px] text-white/88 transition hover:border-white/24 hover:bg-white/10 hover:text-white ${
+                  isHomePage ? "hidden lg:inline-flex" : "hidden md:inline-flex"
+                }`}
               >
                 <img
                   src={threadsIcon}
@@ -171,7 +185,7 @@ export function Header() {
               {isHomePage && (
                 <button
                   onClick={() => setMobileOpen(!mobileOpen)}
-                  className="text-foreground md:hidden"
+                  className="text-foreground lg:hidden"
                   aria-label="選單"
                   aria-expanded={mobileOpen}
                 >
@@ -188,7 +202,7 @@ export function Header() {
           <AnimatePresence>
             {effectiveMobileOpen && (
               <motion.div
-                className="bg-background/94 border-t border-white/6 px-4 pb-6 md:hidden"
+                className="bg-background/94 border-t border-white/6 px-4 pb-6 lg:hidden"
                 initial={{ opacity: 0, y: -8 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
