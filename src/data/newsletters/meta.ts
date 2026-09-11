@@ -12,6 +12,17 @@ export interface NewsletterMeta {
 
 export const newsletterMeta: NewsletterMeta[] = [
   {
+    id: "monthly-2026-08",
+    title: "Raycast 八月月報：Raycast 2.0 正式推出、AI 升級與定價更新",
+    date: "2026-09-10",
+    type: "monthly",
+    theme: "violet",
+    kicker: "Raycast August Update",
+    summary:
+      "Pedro 帶來八月更新，涵蓋 Raycast 2.0 正式推出、Inline Emoji Picker、BYOM、AI 與定價調整，以及 Glaze 的 Claude 整合。",
+    author: "Raycast Team",
+  },
+  {
     id: "article-2026-new-standard-ai-coding",
     title:
       "當寫程式變便宜，什麼才是新標準？Raycast、Notion、OpenAI 談 AI coding",

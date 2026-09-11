@@ -1,0 +1,311 @@
+<h2>八月更新：Raycast 2.0 正式推出、AI 升級與定價調整</h2>
+<p>
+  <a href="https://x.com/peduarte">Pedro</a>
+  帶來八月月報，整理 Raycast 2.0 正式版、全新的 AI 體驗、定價調整與 Glaze
+  的最新進展。
+</p>
+<img
+  src="https://resend-attachments.s3.amazonaws.com/cc76c0ac-6e9f-4883-a93e-223f20e1ece1"
+  alt="Raycast 2.0 主視覺，深色立體 2.0 字樣浮在模糊的指令介面上"
+/>
+<h3>Raycast 2.0 正式脫離 beta</h3>
+<p>
+  全新的 Raycast 已完成 beta
+  測試並正式推出。新版除了重新設計介面，也加入多項功能：
+</p>
+<ul>
+  <li><code>File Search in Root</code></li>
+  <li>Dictation</li>
+  <li>Snippets 與 Quicklinks 的標籤</li>
+  <li>重新設計的 AI 體驗，包括支援 Skills 與更多新能力的 AI Chat</li>
+</ul>
+<p>
+  想升級的使用者，可以先查看
+  <a href="https://manual.raycast.com/new-in-v2">Raycast v2 完整介紹</a>。
+</p>
+<p>
+  Dictation 與 AI Chat 在 beta 期間開放免費使用，以便 Raycast
+  測試並改善體驗；正式版推出後，兩項功能將納入 Raycast Pro。登入即可獲得 7 天
+  Pro 免費試用，且不需要信用卡。
+</p>
+<img
+  src="https://resend-attachments.s3.amazonaws.com/31227acc-015d-4a43-9e03-e33a2f4014b1"
+  alt="Raycast Inline Emoji Picker 示範畫面，在搜尋欄輸入文字後顯示多個表情符號"
+/>
+<h3>Inline Emoji Picker</h3>
+<p>
+  新版 Raycast 也帶回經典功能 Inline Emoji Picker。在文字欄位輸入
+  <code>:</code>，接著輸入 emoji
+  名稱，就能開啟選擇器並直接插入表情符號，不必中斷手邊流程。
+</p>
+<p>
+  Inline Emoji Picker 可用於 Raycast 內各種文字欄位，包括 AI
+  Chat、Notes、Snippets、Quicklinks 與 AI Commands；建議結果也會遵循你偏好的
+  emoji 膚色。
+</p>
+<img
+  src="https://resend-attachments.s3.amazonaws.com/bb9aefe0-e2eb-462c-ad3f-fb0b5b88105f"
+  alt="Bring Your Own Model 主視覺，透明磁碟片上亮起紅色 AI 圖示"
+/>
+<h3>Bring Your Own Model</h3>
+<p>
+  Bring Your Own Model（BYOM）讓使用者能在 Raycast v2
+  繼續使用偏好的模型。你可以透過
+  <a href="https://manual.raycast.com/ai/custom-providers">Custom Providers</a>
+  連接任何與 OpenAI 相容的端點、使用
+  <a href="https://manual.raycast.com/ai/local-models">Local Models</a> 透過
+  Ollama 執行模型，或
+  <a href="https://manual.raycast.com/ai/bring-your-own-keys"
+    >加入自己的 OpenRouter API key</a
+  >，從 OpenRouter 的模型目錄中選擇。完成設定後，這些模型就會與 Raycast
+  內建選項一起出現在 Raycast AI。
+</p>
+<p>
+  在 v2 中，Custom Providers、Local Models 與 Bring Your Own Key 都需要 Raycast
+  Pro 訂閱。這與 v1 相比是一項重要改變；Raycast 在 Manual 的
+  <a href="https://manual.raycast.com/ai/byoai">BYOAI 說明</a
+  >中進一步解釋了考量與未來方向。
+</p>
+<img
+  src="https://resend-attachments.s3.amazonaws.com/d6febe9a-5295-45ea-b9e0-643568004728"
+  alt="Raycast AI 更新主視覺，畫面顯示 New in Raycast AI 與 Ask anything 輸入框"
+/>
+<h3>AI 更新</h3>
+<p>
+  Raycast 團隊重新打造了 Raycast AI 的核心。現在只要交付一項任務，AI Chat
+  就能規劃步驟、使用你的
+  extensions、撰寫並執行程式碼、檢查結果，持續工作直到任務完成。
+</p>
+<p>
+  當某個方法失敗時，AI Chat
+  會改試其他途徑；需要你做決定時，則會暫停並提出問題，得到回覆後再從中斷處繼續。
+</p>
+<h3>AI 定價更新</h3>
+<p>
+  這類多步驟任務的執行成本高於單次問答，因此 Raycast 也調整了 AI
+  的計費方式：各方案將從速率限制改為依用量計算，所有訂閱價格維持不變，並新增適合重度使用者的
+  Max 方案。完整考量可閱讀官方文章
+  <a href="https://www.raycast.com/blog/changing-how-raycast-ai-is-priced"
+    >Changing How Raycast AI Is Priced</a
+  >。
+</p>
+<img
+  src="https://resend-attachments.s3.amazonaws.com/0f679c39-1daf-40ec-a94f-8e7fe0349b9c"
+  alt="Glaze 模型選擇器，列出 Opus、Sonnet、Fable 等 AI 模型"
+/>
+<h3>Glaze</h3>
+<p>
+  Glaze 現在能搭配你既有的 agents 與模型使用。連接 Claude 訂閱後，可以使用
+  Opus、Sonnet 與 Fable 建置 App；用量會計入 Claude 訂閱，而非扣除 Glaze
+  credits。beta 期間不限 Glaze 使用量，但仍受原有 Claude 用量上限約束。
+</p>
+<p>
+  新的模型選擇器把 Glaze Fast、Glaze Smart 與已連接的 Claude
+  模型集中在同一處。Fast 開放給所有人，消耗較少 credits；Smart 使用 Glaze
+  能力最強的模型，並包含在 Pro 方案中。
+</p>
+<p>
+  若要連接 Claude，請先安裝 Claude Code 並登入訂閱，再開啟 Glaze 的 Account
+  Settings。其他更新可查看
+  <a href="https://www.glaze.app/changelog">Glaze changelog</a>。
+</p>
+<h3>其他消息</h3>
+<ul>
+  <li>
+    <a href="https://www.raycast.com/keyboard">Raycast Keyboard</a>
+    正式推出，並在 5 小時內售罄。
+  </li>
+  <li>
+    Raycast 發布影片，整理
+    <a href="https://www.youtube.com/watch?v=G7_7F_FBqQE"
+      >102 件你能用 Raycast 完成的事</a
+    >。
+  </li>
+  <li>
+    想更充分運用 AI，可以觀看
+    <a href="https://www.youtube.com/watch?v=nk5Piz0KHpU"
+      >Raycast AI 使用技巧影片</a
+    >。
+  </li>
+  <li>
+    Raycast 開始招募下一批 ambassadors；想在自己的城市舉辦 Raycafé，可以前往
+    <a href="https://www.raycast.com/ambassadors">Ambassadors 頁面</a>申請。
+  </li>
+</ul>
+<h3>團隊精選</h3>
+<ul>
+  <li>
+    <strong>Johan</strong> 為即將到來的團隊 offsite 入手
+    <a
+      href="https://aersf.com/collections/backpacks/products/go-pack-2?country=SE"
+      >Aer Go Pack 2</a
+    >。
+  </li>
+  <li>
+    <strong>Roy</strong> 買了幾件 Shift Fashion Group 的
+    <a href="https://shiftfashiongroup.com/">perfect black tees</a
+    >。這個品牌從在 YouTube 拆解服裝起家，後來打造出自己的標準款 T-shirt。
+  </li>
+  <li>
+    <strong>Benoît</strong> 從 Decathlon 買了
+    <a
+      href="https://www.decathlon.co.uk/p/elemnt-bolt-3-gps-cycling-computer/379016/m8992553"
+      >Wahoo ELEMNT BOLT 3</a
+    >，以及一副
+    <a
+      href="https://www.decathlon.co.uk/p/photochromic-cycling-glasses-category-1-3-perf-500-light/334109/c219m8648847"
+      >變色自行車眼鏡</a
+    >。
+  </li>
+  <li>
+    <strong>Andreas</strong> 買了一隻
+    <a href="https://store.pollen-robotics.com/products/microduck">Microduck</a
+    >，雖然還沒到貨，但已經讓人期待。
+  </li>
+  <li>
+    <strong>Bruno</strong> 看了
+    <a href="https://letterboxd.com/film/la-gradiva/">La Gradiva</a> 與
+    <a href="https://letterboxd.com/film/la-bola-negra/">La Bola Negra</a
+    >，兩部都是他今年坎城影展片單中的最愛。
+  </li>
+  <li>
+    <strong>Stephanie</strong> 訂購由葡萄牙美麗諾羊毛製成的
+    <a href="https://retrosaria.rosapomar.com/products/joao"
+      >Rosa Pomar João yarn</a
+    >。
+  </li>
+  <li>
+    <strong>Miguel</strong> 預購 A24 出版、描寫 Anthony Bourdain 早年生活的
+    <a href="https://shop.a24films.com/products/happier-stupider-times"
+      >Happier, Stupider Times: Anthony Bourdain’s Provincetown Years</a
+    >。
+  </li>
+  <li>
+    <strong>Petr</strong> 使用
+    <a href="https://incogni.com/">Incogni</a>
+    向資料仲介商移除個人資訊；一年後，他每天接到的推銷電話已幾乎降到零。
+  </li>
+  <li>
+    <strong>Adil</strong> 入手昆蟲叮咬止癢器
+    <a href="https://www.amazon.fr/dp/B0B4HXDZWZ">Beurer BiteX</a>。
+  </li>
+  <li>
+    <strong>Dev</strong> 再次用
+    <a href="https://sequential.com/hybrid-analog/take-5-compact-polysynth/"
+      >Sequential Take 5</a
+    >製作音樂，單純享受過程，而不追求產出；也可以
+    <a href="https://www.youtube.com/watch?v=YxU_qYot-qg&amp;t=1274s"
+      >聽聽它的聲音</a
+    >。
+  </li>
+  <li>
+    <strong>Tom</strong> 為
+    <a href="https://bambulab.com/en-eu/a1-mini">Bambu Lab A1 mini</a>
+    補充了線材，準備列印各種物件，整理有寶寶後的生活空間。
+  </li>
+  <li>
+    <strong>João</strong> 看了
+    <a href="https://www.imdb.com/title/tt5335774/">The Yellow Tie</a>，又買了
+    <a
+      href="https://ausgeknipst.de/en/products/development-spool-70mm-65mm-for-hasselblad-a70-mamiya-rb67-paterson"
+      >70 mm 底片顯影捲軸</a
+    >、
+    <a href="https://smarthomeshop.io/en/products/hlk-ld2450-24ghz-mmwave"
+      >24 GHz mmWave 雷達晶片</a
+    >與食譜書
+    <a href="https://www.adlibris.com/sv/bok/sauces-9780544819825">Sauces</a>。
+  </li>
+  <li>
+    <strong>Tirta</strong> 買了
+    <a href="https://www.johansson-bikes.com/fiete/fiete-transportkorb/"
+      >Johansson Fiete cargo bike</a
+    >，每天都會使用，連度假也不例外；孩子還會把它當成有輪子的小睡艙。
+  </li>
+  <li>
+    <strong>David</strong> 試坐
+    <a
+      href="https://www.ikea.com/gb/en/p/oskarshamn-wing-chair-tonerud-red-30521678/#content"
+      >IKEA OSKARSHAMN 扶手椅</a
+    >後覺得出乎意料地舒服，於是直接訂了兩張。
+  </li>
+  <li>
+    <strong>Beth</strong> 正在重讀
+    <a
+      href="https://www.amazon.com/Places-Between-Rory-Stewart-ebook/dp/B003IEJZUQ"
+      >The Places in Between</a
+    >，這本書記錄 Rory Stewart 於 2002 年徒步穿越阿富汗的經歷。
+  </li>
+  <li>
+    <strong>Marcos</strong> 發現一個完全由 AI slop 組成的
+    <a href="https://www.youtube.com/channel/UC_ELnYVFVVwliodQDNgjgZA"
+      >YouTube 頻道</a
+    >，很享受它的氛圍。
+  </li>
+  <li>
+    <strong>Giedrė</strong> 很喜歡
+    <a href="https://www.imdb.com/title/tt7768848/">Wild Wild Country</a
+    >，也在聽
+    <a href="https://open.spotify.com/artist/3oVcF3VdpMuvMvLLyHPT4t"
+      >Sierra Ferrell</a
+    >；她形容對方像是女性版 Post Malone。
+  </li>
+  <li>
+    <strong>Michael</strong> 買了
+    <a href="https://matchabebes.com/en">Matcha Bébés</a
+    >，也發現抹茶品質確實會影響風味；他偏好青草味沒那麼重的款式。
+  </li>
+  <li>
+    <strong>Jac</strong> 看了影集
+    <a href="https://www.imdb.com/title/tt33049767/">Adults</a>
+    第二季，非常喜歡。
+  </li>
+  <li>
+    <strong>Andrei</strong> 買了第一台
+    <a
+      href="https://cosori.co.uk/products/cosori-turbo-tower-air-fryer-pro-smart"
+      >Cosori air fryer</a
+    >，只要記得打開正確的炸籃，就能同時烹調兩邊的食物。
+  </li>
+  <li>
+    <strong>Jordan</strong> 迷上 Apple TV+ 影集
+    <a
+      href="https://tv.apple.com/gb/show/silo/umc.cmc.3yksgc857px0k0rqe5zd4jice"
+      >Silo</a
+    >，甚至每看完一集都會接著找分析影片。
+  </li>
+  <li>
+    <strong>Pavlo</strong> 買了一組
+    <a href="https://frescobol1946.com/en/products/raquettes-de-frescobol-noir"
+      >Frescobol 1946 沙灘球拍</a
+    >。
+  </li>
+  <li>
+    <strong>Marcin</strong> 為度假時沖咖啡購入
+    <a href="https://www.amazon.com/dp/B0GKFDZ725">KINGrinder K6</a
+    >。它堅固、精準，他的女兒也很享受手動磨豆。
+  </li>
+  <li>
+    <strong>Thomas</strong> 最近很享受前往資源回收中心，正處於自己的 Marie Kondo
+    時期。
+  </li>
+  <li>
+    <strong>Dianne</strong> 買了一大盆琴葉榕，並用 AI
+    與提醒事項解讀植物的各種狀態。
+  </li>
+  <li>
+    <strong>Dhruv</strong> 受到 Per 啟發買了 walking pad，也因 Steph
+    的大力推廣而迷上 Bad Bunny。
+  </li>
+  <li><strong>Marcos</strong> 看了先前由團隊成員推薦的影集 Widow’s Bay。</li>
+  <li>
+    <strong>Pedro</strong> 又買了一組
+    <a
+      href="https://sonofastag.com/products/whitesville-quali-t-2-pack-crew-neck-t-shirt-white"
+      >Whitesville 白色 T-shirt</a
+    >。
+  </li>
+</ul>
+<p>
+  想查看 Raycast 的所有產品變更，可以前往
+  <a href="https://www.raycast.com/changelog">Raycast changelog</a>。
+</p>
