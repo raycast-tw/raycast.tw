@@ -12,6 +12,18 @@ export interface NewsletterMeta {
 
 export const newsletterMeta: NewsletterMeta[] = [
   {
+    id: "article-2026-new-standard-ai-coding",
+    title:
+      "當寫程式變便宜，什麼才是新標準？Raycast、Notion、OpenAI 談 AI coding",
+    date: "2026-08-18",
+    type: "article",
+    theme: "crimson",
+    kicker: "Raycast · The New Standard",
+    summary:
+      "Raycast、Notion、OpenAI 與 Cursor 從讀不讀程式碼、角色融合、token 使用、個人化軟體到安全邊界，拆解 AI coding 時代真正稀缺的能力。",
+    author: "Raycast Community Taiwan",
+  },
+  {
     id: "monthly-2026-07",
     title: "Raycast 七月月報：Screen Awareness、Cloud Sync 與更多更新",
     date: "2026-08-05",
