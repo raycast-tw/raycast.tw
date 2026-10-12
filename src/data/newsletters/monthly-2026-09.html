@@ -1,0 +1,267 @@
+<h2>九月更新：更快、更輕、Send to AI 與 Auto Model</h2>
+<p>
+  <a href="https://x.com/peduarte">Pedro</a>
+  帶來九月月報。這個月的重點是讓 Raycast 跑得更快、占用更少資源，另外也加入新的
+  AI 上下文工具、模型選擇方式與系統指令。
+</p>
+<img
+  src="https://resend-attachments.s3.amazonaws.com/JWpGxfW6wiAdcWFYizo9gC/63bdeaba-d1f1-43d6-a1f9-3f7d348e02f6"
+  alt="Raycast v2.7 更新主視覺，三支鐵鎚旁標示 Improvements and Send to AI"
+/>
+<h3>更快、更輕</h3>
+<p>最近兩個版本都把重點放在記憶體用量與效能：</p>
+<ul>
+  <li>
+    在 Mac 上，AI Chat、Notes 與 Settings 現在各自在獨立 process
+    執行。繁忙的聊天或大型筆記不再拖慢 Root
+    Search，關閉後也會釋放所占用的記憶體。Raycast 主程式待機時最多可減少 35%
+    記憶體用量。
+  </li>
+  <li>
+    Raycast host process 的記憶體用量約減少 50%，每個 extension process
+    啟動時的記憶體用量約減少 30%。
+  </li>
+  <li>修正一項會隨著 Raycast 開啟時間愈久而持續增長的記憶體洩漏。</li>
+  <li>
+    File Search 尖峰記憶體用量最多減少 80%，搜尋期間最多減少
+    95%；搜尋速度最多提升 30%，背景索引也會使用少得多的 CPU。
+  </li>
+  <li>
+    AI request 的資料量變小，讓 local model
+    回覆簡單訊息的速度更快，簡單請求消耗的 credits 也更少。
+  </li>
+</ul>
+<h3>把畫面內容傳送給 AI</h3>
+<p>
+  Mac 新增兩個指令，讓 AI 直接理解你正在看的內容。使用
+  <code>Send Element to AI</code>
+  時，把游標移到螢幕上的段落、圖片或按鈕等元素，再按一下就能傳送到 AI
+  Chat；若要分享整個視窗，則可使用
+  <code>Send Window to AI</code>。
+</p>
+<p>
+  建議替 <code>Send Element to AI</code> 指定像是 <code>⌘ + ⇧ + 0</code> 的
+  hotkey，能更快擷取上下文。
+</p>
+<img
+  src="https://resend-attachments.s3.amazonaws.com/JWpGxfW6wiAdcWFYizo9gC/8aa14ddc-4b24-47c8-8ac0-1e7724023d0a"
+  alt="Raycast v2.7 New System Actions 主視覺，深色背景上有發光的紅色齒輪"
+/>
+<h3>更多系統指令（僅限 Windows）</h3>
+<p>
+  五個新指令讓日常設定都能在幾次按鍵內完成：用 <code>WiFi</code> 與
+  <code>Bluetooth</code> 管理網路與藍牙裝置；用 <code>Toggle WiFi</code>、
+  <code>Toggle Energy Saver</code> 與
+  <code>Toggle Airplane Mode</code> 切換各項功能；也能透過
+  <code>Toggle Camera Mute</code>
+  封鎖或恢復所有 App 的相機存取權。替常用指令設定 hotkey，操作會更快。
+</p>
+<img
+  src="https://resend-attachments.s3.amazonaws.com/JWpGxfW6wiAdcWFYizo9gC/7390a306-4423-48f4-8cb1-7c6599bfbc4b"
+  alt="Raycast v2.6 Improvements 主視覺，紅色發光的速度表象徵效能提升"
+/>
+<h3>Auto Model</h3>
+<p>Auto Model 經過重新設計，現在可以選擇三種模型挑選偏好：</p>
+<ul>
+  <li>
+    <strong>Lightweight</strong>：回應時間比 Flagship 約少 70%，適合快速提問。
+  </li>
+  <li>
+    <strong>Balanced</strong>：預設選項，使用的 credits 比 Flagship 約少 70%。
+  </li>
+  <li>
+    <strong>Flagship</strong>：針對較困難的任務使用能力最強的模型，需要 Pro+ 或
+    Max 訂閱。
+  </li>
+</ul>
+<p>
+  現在也能在 AI Chat 輸入 <code>/usage</code>，或到 Settings 查看 Claude 與
+  ChatGPT 訂閱用量。
+</p>
+<img
+  src="https://resend-attachments.s3.amazonaws.com/JWpGxfW6wiAdcWFYizo9gC/636d67ca-5911-4602-914c-5d9ff91e2417"
+  alt="External Model Providers 主視覺，發光的介面按鍵旁顯示外部模型供應商字樣"
+/>
+<h3>Extension 提供的 AI 模型</h3>
+<p>
+  Extensions 現在能把自己的 AI 模型帶進 Raycast。從 Store 安裝相容的 extension
+  並完成設定後，就能在 AI Chat 選擇它提供的模型。
+</p>
+<p>
+  已支援的 extensions 包括
+  <a href="https://www.raycast.com/massimiliano_pasquini/raycast-ollama"
+    >Ollama AI</a
+  >、<a href="https://www.raycast.com/ridemountainpig/ai-by-vercel"
+    >AI by Vercel</a
+  >、<a href="https://www.raycast.com/EvanZhouDev/cerebras">Cerebras</a>、<a
+    href="https://www.raycast.com/ilian/groq"
+    >Groq</a
+  >與
+  <a href="https://www.raycast.com/vineeth_sai_narajala/lm-studio">LM Studio</a
+  >。開發者可以查看
+  <a href="https://developers.raycast.com/misc/changelog">API changelog</a
+  >，把模型加入自己的 extension。
+</p>
+<img
+  src="https://resend-attachments.s3.amazonaws.com/JWpGxfW6wiAdcWFYizo9gC/5d9753e6-137e-4fab-a119-ec601ff8ea27"
+  alt="Raycast AI 更新預覽，介面顯示 New in Raycast AI 與版本 v2.3"
+/>
+<h3>Projects、Automations 與自有訂閱</h3>
+<p>上個月介紹的新版 Raycast AI，也一起帶來幾項值得補充的功能。</p>
+<ul>
+  <li>
+    <strong>Bring Your Own Subscriptions</strong>：在任何 Raycast 付費方案中連接
+    Claude 或 ChatGPT 帳號，就能在 AI Chat、Quick AI 與 AI Commands
+    使用訂閱內的模型。可以前往
+    <code>Settings → AI → Models &amp; Providers</code> 開啟。
+  </li>
+  <li>
+    <strong>Projects</strong>：把同一主題的對話集中管理。每個 Project
+    都有自己的記憶，不必每次開始新對話都重新說明；也能指定 Obsidian
+    vault、發票資料夾等 working directory，讓 agent 知道要在哪裡處理檔案。
+  </li>
+  <li>
+    <strong>Automations</strong>：按照排程執行 prompts，由 agent
+    在背景處理並把結果加入對話。Raycast 團隊會用它每天早上分類 email、每小時追蹤
+    open pull requests，並在每天晚上從會議筆記更新 Raycast 的記憶。
+  </li>
+</ul>
+<img
+  src="https://resend-attachments.s3.amazonaws.com/JWpGxfW6wiAdcWFYizo9gC/a76c49f6-c401-4307-a6c0-ae6f442a64f6"
+  alt="Raycast for iOS v1.3.8 主視覺，展示可自訂的新版分頁列介面"
+/>
+<h3>iOS：新版導覽</h3>
+<p>
+  Raycast for iOS 加入可自訂的 tab
+  bar。常用功能可以放在隨手可及的位置，其餘功能集中在 More，並能透過統一搜尋找到
+  App 內需要的內容。
+</p>
+<p>
+  符合資格的個人方案也能直接在 App 內加購 AI credits，還可以透過 Dictation
+  History 重新查看過去的逐字稿。
+</p>
+<h3>其他消息</h3>
+<ul>
+  <li>
+    看看 Notion AI 工程師
+    <a href="https://www.youtube.com/watch?v=k6WRf1S9z4M"
+      >Ryan Nystrom 如何使用 Raycast</a
+    >。
+  </li>
+  <li>
+    觀看
+    <a href="https://www.youtube.com/watch?v=ucVSAI2gnro"
+      >Automations、Projects 與新版 harness 的實際示範</a
+    >。
+  </li>
+  <li>
+    Raycast 開始推出一系列基礎功能短片，包括
+    <a href="https://www.youtube.com/watch?v=LIJLTKVXv38">Clipboard History</a
+    >、<a href="https://www.youtube.com/watch?v=yjZBteRD4vs">Calculator</a> 與
+    <a href="https://www.youtube.com/watch?v=C0oOsjmXduY">Shortcuts</a>。
+  </li>
+  <li>
+    10 月 29 日將在巴黎與 Linear、Mistral 合辦
+    <a href="https://luma.com/4pn0klwq">The New Standard</a>，討論 AI
+    如何改變軟體開發方式。
+  </li>
+  <li>
+    Raycast 開始招募下一批 ambassadors；想在自己的城市舉辦 Raycafé，可以前往
+    <a href="https://www.raycast.com/ambassadors">Ambassadors 頁面</a>申請。
+  </li>
+</ul>
+<h3>團隊精選</h3>
+<ul>
+  <li>
+    <strong>Roy</strong> 很喜歡他最愛的 podcast《What's Your Problem》這集
+    <a
+      href="https://pocketcasts.com/podcast/whats-your-problem-pushkin/0e3d88d0-2c44-013e-f780-0affc98f2b87/can-we-defeat-deepfakes/ea125fdf-26e8-4f43-9481-1bac541e4f71"
+      >Can We Defeat Deepfakes?</a
+    >。
+  </li>
+  <li>
+    <strong>Bruno</strong> 入手
+    <a
+      href="https://wawwaclothing.com/collections/bags/products/studio-musette-black"
+      >Wawwa Studio Musette bag</a
+    >，認為它是最棒的單車包，走路使用也很好用。
+  </li>
+  <li>
+    <strong>Tom</strong> 每次到葡萄牙都會買南瓜果醬，這次從 offsite
+    帶回三罐，也很推薦
+    <a href="https://www.amazon.ie/dp/B09GNX978Y">線上販售的版本</a>。
+  </li>
+  <li>
+    <strong>Dany</strong> 入手一台
+    <a
+      href="https://www.thule.com/strollers/full-size-strollers/thule-charm-bundle-_-11500506"
+      >Thule Charm 嬰兒推車</a
+    >。
+  </li>
+  <li>
+    <strong>Marcos</strong> 一月組了自己的電腦，很喜歡它的
+    <a href="https://thor-zone.com/mini-itx/nanoq/">Thorzone Nanoq 機殼</a
+    >，偶爾還會停下來欣賞它。
+  </li>
+  <li>
+    <strong>João</strong> 受到 Benoît 大力啟發，買了兩個
+    <a
+      href="https://www.kitchenlab.se/p/madeleineplat-26-x-20cm-non-stick-de-buyer/"
+      >瑪德蓮烤模</a
+    >，而且已經頻繁使用。
+  </li>
+  <li>
+    <strong>Giedrė</strong> 最近很喜歡影集
+    <a href="https://www.imdb.com/title/tt21097264/">East of Eden</a>。
+  </li>
+  <li>
+    <strong>Jac</strong> 推薦 Troye Sivan 的新專輯
+    <a href="https://music.apple.com/gb/album/shes-the-best/6799851049"
+      >she's the best</a
+    >；她已經等他的新作品很久了。
+  </li>
+  <li>
+    <strong>Stephanie</strong> 為了打造天然跳水池，買了「多得有點誇張」的
+    <a
+      href="https://www.expert-bassin.com/bache-epdm-bassin-120mm-premium-2-feutres-400g-5839.html"
+      >EPDM 池塘防水布</a
+    >。
+  </li>
+  <li>
+    <strong>Greg</strong> 買了
+    <a
+      href="https://www.zdrowyzwierzak.pl/product-pol-6641-TRIXIE-Mata-transporter-legowisko-psa-pokrowiec-siedzenie-samochodu-auta-61.html"
+      >Trixie 汽車座椅保護墊</a
+    >，保護新車座椅不受 Rambo 破壞；Rambo 現在在家裡也會睡在上面。
+  </li>
+  <li>
+    <strong>Benoît</strong> 原本想選的是他很不喜歡的 Widow's
+    Bay，真正的推薦則是讓他覺得非常精彩的
+    <a
+      href="https://tv.apple.com/gb/show/silo/umc.cmc.3yksgc857px0k0rqe5zd4jice"
+      >Silo 第三季</a
+    >。
+  </li>
+  <li>
+    英國典型的天氣「恢復正常」後，<strong>Alicia</strong> 很期待再次穿上
+    <a href="https://uk.merrypeople.com/">Merry People 雨靴</a>。
+  </li>
+  <li>
+    Prime Deals 讓 <strong>Miguel</strong> 入手了一個
+    <a href="https://busy.app/">Busy Bar</a>。
+  </li>
+  <li>
+    <strong>Johan</strong> 看了新的 Resident Evil 電影，而且非常喜歡；Benoît
+    也準備在週末去看。
+  </li>
+  <li>
+    <strong>Pedro</strong> 最近在找一支新筆，最後買了
+    <a href="https://x.com/peduarte/status/2107459325535125970"
+      >Kaweco Special Brass</a
+    >。
+  </li>
+</ul>
+<p>
+  想查看 Raycast 的所有產品變更，可以前往
+  <a href="https://www.raycast.com/changelog">Raycast changelog</a>。
+</p>

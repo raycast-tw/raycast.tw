@@ -12,6 +12,17 @@ export interface NewsletterMeta {
 
 export const newsletterMeta: NewsletterMeta[] = [
   {
+    id: "monthly-2026-09",
+    title: "Raycast 九月月報：更快、更輕、Send to AI 與 Auto Model",
+    date: "2026-10-09",
+    type: "monthly",
+    theme: "amber",
+    kicker: "Raycast September Update",
+    summary:
+      "Pedro 帶來九月更新，涵蓋效能與記憶體改善、Send to AI、Windows 系統指令、Auto Model、Extension AI 模型與 iOS 導覽更新。",
+    author: "Raycast Team",
+  },
+  {
     id: "monthly-2026-08",
     title: "Raycast 八月月報：Raycast 2.0 正式推出、AI 升級與定價更新",
     date: "2026-09-10",
