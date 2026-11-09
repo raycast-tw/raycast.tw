@@ -12,6 +12,17 @@ export interface NewsletterMeta {
 
 export const newsletterMeta: NewsletterMeta[] = [
   {
+    id: "monthly-2026-10",
+    title: "Raycast 十月月報：Dictate to AI、iOS 鍵盤與更多更新",
+    date: "2026-11-06",
+    type: "monthly",
+    theme: "crimson",
+    kicker: "Raycast October Update",
+    summary:
+      "Pedro 帶來十月更新，涵蓋 Dictate to AI、Windows Screen Awareness、Notes 圖片支援、效能提升、全新 iOS 鍵盤與 Cloud Sync v2。",
+    author: "Raycast Team",
+  },
+  {
     id: "monthly-2026-09",
     title: "Raycast 九月月報：更快、更輕、Send to AI 與 Auto Model",
     date: "2026-10-09",
