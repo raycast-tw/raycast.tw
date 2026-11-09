@@ -9,6 +9,7 @@ export interface Ambassador {
   name: string;
   role: string;
   avatar: string | null;
+  raycastProfile?: string;
   twitter?: string;
   github?: string;
   threads?: string;
@@ -22,6 +23,7 @@ export const ambassadors: Ambassador[] = [
     name: "Yen Cheng",
     role: "Ambassador",
     avatar: ycAvatar,
+    raycastProfile: "https://www.raycast.com/ridemountainpig",
     threads: "https://www.threads.com/@yencheng_0802",
     twitter: "https://x.com/ridemountainpig",
     website: "https://yencheng.dev",
@@ -31,6 +33,7 @@ export const ambassadors: Ambassador[] = [
     name: "Cash Wu",
     role: "Ambassador",
     avatar: cashAvatar,
+    raycastProfile: "https://www.raycast.com/cashwu",
     threads: "https://www.threads.com/@cashwugeek",
     twitter: "https://x.com/CashWuGeek",
   },
@@ -39,6 +42,7 @@ export const ambassadors: Ambassador[] = [
     name: "Yiwei",
     role: "Ambassador",
     avatar: weihoAvatar,
+    raycastProfile: "https://www.raycast.com/1weiho",
     threads: "https://www.threads.com/@1weiho",
     twitter: "https://x.com/1weiho",
     website: "https://1wei.dev",
@@ -48,6 +52,7 @@ export const ambassadors: Ambassador[] = [
     name: "Yukai",
     role: "Ambassador",
     avatar: null,
+    raycastProfile: "https://www.raycast.com/Yukai",
     threads: "https://www.threads.com/@yukaii_h",
     twitter: "https://x.com/yukaii_h",
   },
@@ -63,6 +68,7 @@ export const ambassadors: Ambassador[] = [
     name: "Yacolate",
     role: "Ambassador",
     avatar: yacolateAvatar,
+    raycastProfile: "https://www.raycast.com/Yacolate",
     twitter: "https://x.com/Yacolate0",
   },
 ];

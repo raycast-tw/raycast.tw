@@ -7,6 +7,7 @@ import {
   XLight,
 } from "@ridemountainpig/svgl-react";
 import type { Ambassador } from "../../data/ambassadors";
+import raycastIcon from "../../assets/raycast-white.svg";
 
 interface AmbassadorCardProps {
   ambassador: Ambassador;
@@ -16,33 +17,41 @@ interface AmbassadorCardProps {
 export function AmbassadorCard({ ambassador, index = 0 }: AmbassadorCardProps) {
   const socialLinks = [
     {
+      href: ambassador.raycastProfile,
+      label: `${ambassador.name} on Raycast`,
+      icon: (
+        <img src={raycastIcon} alt="" className="size-4" aria-hidden="true" />
+      ),
+      iconType: "image" as const,
+    },
+    {
       href: ambassador.threads,
       label: `${ambassador.name} on Threads`,
-      Icon: ThreadsLight,
+      icon: <ThreadsLight className="size-4" strokeWidth={1.85} />,
       iconType: "svgl" as const,
     },
     {
       href: ambassador.twitter,
       label: `${ambassador.name} on X`,
-      Icon: XLight,
+      icon: <XLight className="size-4" strokeWidth={1.85} />,
       iconType: "svgl" as const,
     },
     {
       href: ambassador.linkedin,
       label: `${ambassador.name} on LinkedIn`,
-      Icon: LinkedIn,
+      icon: <LinkedIn className="size-4" strokeWidth={1.85} />,
       iconType: "svgl" as const,
     },
     {
       href: ambassador.github,
       label: `${ambassador.name} on GitHub`,
-      Icon: GitHubLight,
+      icon: <GitHubLight className="size-4" strokeWidth={1.85} />,
       iconType: "svgl" as const,
     },
     {
       href: ambassador.website,
       label: `${ambassador.name} website`,
-      Icon: Globe,
+      icon: <Globe className="size-4" strokeWidth={1.85} />,
       iconType: "lucide" as const,
     },
   ].filter((item) => Boolean(item.href));
@@ -85,7 +94,7 @@ export function AmbassadorCard({ ambassador, index = 0 }: AmbassadorCardProps) {
         </p>
 
         <div className="mt-2 -ml-2 flex flex-wrap items-center">
-          {socialLinks.map(({ href, label, Icon, iconType }) => (
+          {socialLinks.map(({ href, label, icon, iconType }) => (
             <a
               key={label}
               href={href}
@@ -98,7 +107,7 @@ export function AmbassadorCard({ ambassador, index = 0 }: AmbassadorCardProps) {
               }`}
               aria-label={label}
             >
-              <Icon className="size-4" strokeWidth={1.85} />
+              {icon}
             </a>
           ))}
         </div>
